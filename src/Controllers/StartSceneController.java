@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -30,11 +31,26 @@ public class StartSceneController {
         buyingPhaseController.displayName(playerOneTextField.getText(), playerTwoTextField.getText());
 
         //Switch to OpenScene
-//        Parent root = FXMLLoader.load(getClass().getResource("../Scenes/OpenScene.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(isTextFieldEmpty(playerOneTextField) || isTextFieldEmpty(playerTwoTextField)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("WARNING!");
+            alert.setHeaderText("Warning!");
+            alert.setContentText("Please enter the player name");
+            alert.show();
+        }
+       else {
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    public Boolean isTextFieldEmpty(TextField field){
+        if(field.getText().length() == 0){
+            return true;
+        }
+        return false;
     }
 
 }
