@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TempSceneController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StartSceneController">
    <children>
       <Label layoutX="123.0" layoutY="48.0" text="PLAYER ONE">
          <font>
             <Font name="Consolas Bold" size="40.0" />
          </font>
       </Label>
-      <TextField layoutX="122.0" layoutY="123.0" prefHeight="55.0" prefWidth="232.0" />
-      <TextField layoutX="874.0" layoutY="124.0" prefHeight="55.0" prefWidth="232.0" />
+      <TextField fx:id="playerOneTextField" layoutX="122.0" layoutY="123.0" prefHeight="55.0" prefWidth="232.0" />
+      <TextField fx:id="playerTwoTextField" layoutX="874.0" layoutY="124.0" prefHeight="55.0" prefWidth="232.0" />
       <Button layoutX="608.0" layoutY="558.0" mnemonicParsing="false" onAction="#onOk" text="OK">
          <font>
             <Font size="22.0" />
