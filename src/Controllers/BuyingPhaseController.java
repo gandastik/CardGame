@@ -4,12 +4,12 @@ import Classes.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 
 public class BuyingPhaseController {
     private Stage stage;
@@ -24,27 +24,42 @@ public class BuyingPhaseController {
     private Label playerOneName;
     @FXML
     private Label playerTwoName;
+    @FXML
+    private Label playerOneHp;
+    @FXML
+    private Label playerTwoHp;
 
-    public void displayName(String playerOne, String playerTwo) {
-        //Set the name to the player
-        this.playerOne = new Player(playerOne);
-        this.playerTwo = new Player(playerTwo);
+    public void receiveData(Player one, Player two) {
+        playerOne = one;
+        playerTwo = two;
 
         //Display the name on the screen
-        playerOneName.setText("Player One: " + playerOne);
-        playerTwoName.setText("Player Two: " + playerTwo);
+        this.playerOneName.setText("Player One: " + one.getName());
+        this.playerTwoName.setText("Player Two: " + two.getName());
+
+        //Display the hp on the screen
+        this.playerOneHp.setText("Player One HP : " + one.getHp());
+        this.playerTwoHp.setText("Player Two HP: " + two.getHp());
     }
 
     public void onNext(ActionEvent e) throws Exception{
-        node = (Node) e.getSource();
-        stage = (Stage) node.getScene().getWindow();
-        stage.close();
+        //send players object to BattlePhaseController
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BattlePhase.fxml"));
+        root = loader.load();
 
-        root = FXMLLoader.load(getClass().getResource("../Scenes/BattlePhase.fxml"));
-        stage.setUserData(playerOne);
+        BattlePhaseController controller = loader.getController();
+        controller.receiveData(this.playerOne, this.playerTwo);
 
+        //Switch to BattlePhaseScene
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onHit(ActionEvent e) {
+        this.playerOne.takeDmg();
+        this.playerOneHp.setText("Player One HP : " + this.playerOne.getHp());
+        System.out.println("Player one HP : " + this.playerOne.getHp());
     }
 }

@@ -1,5 +1,6 @@
 package Controllers;
 
+import Classes.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class StartSceneController {
-
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -21,14 +21,18 @@ public class StartSceneController {
     @FXML
     private TextField playerTwoTextField;
 
-    public void onOk(ActionEvent e) throws Exception{
+    Player playerOne;
+    Player playerTwo;
 
-        //send player names to BuyingPhaseController
+    public void onOk(ActionEvent e) throws Exception{
+        //send players object to BuyingPhaseController
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BuyingPhase.fxml"));
         root = loader.load();
 
         BuyingPhaseController buyingPhaseController = loader.getController();
-        buyingPhaseController.displayName(playerOneTextField.getText(), playerTwoTextField.getText());
+        this.playerOne = new Player(playerOneTextField.getText());
+        this.playerTwo = new Player(playerTwoTextField.getText());
+        buyingPhaseController.receiveData(this.playerOne, this.playerTwo);
 
         //Switch to OpenScene
         if(isTextFieldEmpty(playerOneTextField) || isTextFieldEmpty(playerTwoTextField)){
