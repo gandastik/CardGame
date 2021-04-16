@@ -17,8 +17,8 @@ public class OpenSceneController {
     private Parent root;
 
     public void onPlay(ActionEvent e) throws Exception{
-        //Switch to ....scene <-- change later
-        Parent root = FXMLLoader.load(getClass().getResource("../Scenes/StartScene.fxml"));
+        //Switch to Startscene
+        root = FXMLLoader.load(getClass().getResource("../Scenes/StartScene.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

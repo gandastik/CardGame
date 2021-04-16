@@ -34,12 +34,12 @@ public class BattlePhaseController {
         playerTwo = two;
 
         //Display the name on the screen
-        this.playerOneName.setText("Player One: " + one.getName());
-        this.playerTwoName.setText("Player Two: " + two.getName());
+        this.playerOneName.setText("Player One: " + playerOne.getName());
+        this.playerTwoName.setText("Player Two: " + playerTwo.getName());
 
         //Display the hp on the screen
-        this.playerOneHp.setText("Player One HP : " + one.getHp());
-        this.playerTwoHp.setText("Player Two HP: " + two.getHp());
+        this.playerOneHp.setText("Player One HP : " + playerOne.getHp());
+        this.playerTwoHp.setText("Player Two HP: " + playerTwo.getHp());
 
     }
 

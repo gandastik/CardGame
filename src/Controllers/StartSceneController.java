@@ -34,7 +34,7 @@ public class StartSceneController {
         this.playerTwo = new Player(playerTwoTextField.getText());
         buyingPhaseController.receiveData(this.playerOne, this.playerTwo);
 
-        //Switch to OpenScene
+        //Switch to OpenScene also check if one of the text field is empty
         if(isTextFieldEmpty(playerOneTextField) || isTextFieldEmpty(playerTwoTextField)){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("WARNING!");
