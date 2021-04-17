@@ -50,6 +50,7 @@ public class BattlePhaseController {
 
         BuyingPhaseController buyingPhaseController = loader.getController();
         buyingPhaseController.receiveData(this.playerOne, this.playerTwo);
+        buyingPhaseController.renderPlayerHand();
 
         //Switch to BuyingPhaseScene
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

@@ -6,11 +6,22 @@ import java.util.Collections;
 
 public class CardsCollection {
     private ArrayList<Card> cardsCollection;
+    private Card blankCard;
 
+    //Construtors
     public CardsCollection() {
         this.cardsCollection = new ArrayList<Card>();
         this.addCardsToCollection();
         this.shuffle();
+
+        //create a blank card for every collection of card
+        this.blankCard = new Card();
+    }
+    public CardsCollection(String type){
+        this.cardsCollection = new ArrayList<Card>();
+
+        //create a blank card
+        this.blankCard = new Card();
     }
     
     public ArrayList<Card> getCardsCollection() {
@@ -34,7 +45,18 @@ public class CardsCollection {
         cardsCollection.add(new FireTribe("Inari_Fire", 3, 30, 150));
     }
 
+    //Methods
     public void shuffle(){
+        //remove a blank card out of a collection and then refill the collection.
+        cardsCollection.removeIf(card -> card.getName().equals("blank"));
+        this.addCardsToCollection();
         Collections.shuffle(this.cardsCollection);
     }
+    //remove the card that are selected and replace them with a blank card
+    public void removeCard(Card card) {
+        int index = cardsCollection.indexOf(card);
+        cardsCollection.remove(card);
+        cardsCollection.add(index, blankCard);
+    }
+
 }

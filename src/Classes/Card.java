@@ -25,6 +25,10 @@ public class Card {
         String fileName = this.tribe + "_" + this.name + "_" + this.level + ".png";
         this.image = new Image("./Assets/" +fileName);
     }
+    public Card(){
+        setName("blank");
+        this.image = new Image("./Assets/blankCard.png");
+    }
 
     //Getters
     public int getDamage() {

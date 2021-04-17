@@ -42,7 +42,14 @@ public class StartSceneController {
             alert.setContentText("Please enter the player name");
             alert.show();
         }
-       else {
+        else if(isTheSameName()){
+            Alert aleartName = new Alert(Alert.AlertType.WARNING);
+            aleartName.setTitle("WARNING!");
+            aleartName.setHeaderText("Warning!");
+            aleartName.setContentText("Two players have the same name please change one of the player name.");
+            aleartName.show();
+        }
+        else{
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -55,6 +62,10 @@ public class StartSceneController {
             return true;
         }
         return false;
+    }
+
+    public Boolean isTheSameName() {
+        return playerOneTextField.getText().equals(playerTwoTextField.getText());
     }
 
 }
