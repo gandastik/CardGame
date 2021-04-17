@@ -7,6 +7,7 @@ public class Player {
     private int hp;
     private int money;
     private ArrayList<Card> hands;
+    private static final int MAXNUMCARDONHAND = 7;
 
     //Constructor
     public Player() {
@@ -33,6 +34,9 @@ public class Player {
     public ArrayList<Card> getHands() {
         return this.hands;
     }
+    public static int getMaxNumCardOnHand(){
+        return MAXNUMCARDONHAND;
+    }
 
     //Setters
     public void setName(String name) {
@@ -55,5 +59,4 @@ public class Player {
     public void removeCard(Card card) {
         this.hands.remove(card);
     }
-
 }

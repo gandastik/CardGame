@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -56,9 +57,7 @@ public class BuyingPhaseController implements Initializable {
         this.initBuyingImageViews();
         this.initPlayerHandsImageViews();
         //showing 8 cards for the player to buy
-        for(int i=0;i<8;i++){
-            buyingImageViews[i].setImage(buyingHand.get(i).getImage());
-        }
+        this.renderBuyingHand();
     }
     public void initBuyingImageViews() {
         this.buyingImageViews = new ImageView[8];
@@ -81,6 +80,16 @@ public class BuyingPhaseController implements Initializable {
         this.playerHandsImageViews[5] = this.imgP6;
         this.playerHandsImageViews[6] = this.imgP7;
     }
+    public void initPlayerHandsImageViewsBlank() {
+        this.playerHandsImageViews = new ImageView[7];
+        this.playerHandsImageViews[0] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[1] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[2] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[3] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[4] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[5] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[6] = new ImageView("./Assets/blankCard.png");
+    }
     public void initBuyingCollection(){
         this.buyingCollection = new CardsCollection();
         this.buyingHand = buyingCollection.getCardsCollection();
@@ -90,30 +99,6 @@ public class BuyingPhaseController implements Initializable {
     public void receiveData(Player one, Player two) {
         playerOne = one;
         playerTwo = two;
-
-        /*
-        //Display the name on the screen
-        this.playerOneName.setText("Player One: " + playerOne.getName());
-        this.playerTwoName.setText("Player Two: " + playerTwo.getName());
-
-        //Display the hp on the screen
-        this.playerOneHp.setText("Player One HP : " + playerOne.getHp());
-        this.playerTwoHp.setText("Player Two HP: " + playerTwo.getHp());
-         */
-    }
-
-    //Rendering
-    public void renderBuyingHand() {
-        //rendering the cards on the buying hand
-        for(int i=0;i<8;i++){
-            buyingImageViews[i].setImage(buyingHand.get(i).getImage());
-        }
-    }
-    public void renderPlayerHand() {
-        //rendering the cards on player's hand
-        for (int i = 0; i < this.playerOne.getHands().size(); i++) {
-            playerHandsImageViews[i].setImage(playerOne.getHands().get(i).getImage());
-        }
     }
 
     //Methods
@@ -128,13 +113,13 @@ public class BuyingPhaseController implements Initializable {
     }
     public Card getCardFromSellingBtn(String btnId, Player player) {
         if(player.getName().equals(this.playerOne.getName())){
-            for(int i=0;i<7;i++){
+            for(int i=0;i<this.playerOne.getHands().size();i++){
                 if(btnId.equals("sell" + (i+1))){
                     return this.playerOne.getHands().get(i);
                 }
             }
         } else if (player.getName().equals(this.playerTwo.getName())) {
-            for(int i=0;i<7;i++){
+            for(int i=0;i<Player.getMaxNumCardOnHand();i++){
                 if(btnId.equals(this.playerTwo.getName())){
                     return this.playerTwo.getHands().get(i);
                 }
@@ -163,17 +148,19 @@ public class BuyingPhaseController implements Initializable {
     }
     public void onBuy(ActionEvent e) {
         //can only buy when player hold less than 7 cards on the hands
-        if(playerOne.getHands().size() < 7){
+        if(playerOne.getHands().size() < Player.getMaxNumCardOnHand()){
             //Buying Mechanic .. buy a card and remove it from the collection.
             String id =  ((Button)e.getSource()).getId();
             Card card = getCardFromBuyingHand(id);
-            buyingCollection.removeCard(card);
-            this.buyingHand = buyingCollection.getCardsCollection();
-            this.renderBuyingHand();
+            if(!card.getName().equals("blank") ) {
+                buyingCollection.removeCard(card);
+                this.buyingHand = buyingCollection.getCardsCollection();
+                this.renderBuyingHand();
 
-            //add a card to player's hands
-            this.playerOne.addCard(card);
-            this.renderPlayerHand();
+                //add a card to player's hands
+                this.playerOne.addCard(card);
+                this.renderPlayerHand();
+            }
         }
     }
     public void onReroll(ActionEvent e) {
@@ -183,9 +170,38 @@ public class BuyingPhaseController implements Initializable {
         this.renderBuyingHand();
     }
     public void onSell(ActionEvent e) {
-        //Selling actions
+        //Selling actions on playerOne turn
+        String id = ((Button)e.getSource()).getId();
+        Card card = getCardFromSellingBtn(id, this.playerOne);
+        if(card != null){
+            playerOne.removeCard(card);
+        }
+
+        this.renderPlayerHand();
     }
     public void onSelect(ActionEvent e) {
        //Selected actions
+    }
+
+    //Rendering
+    public void renderBuyingHand() {
+        //rendering the cards on the buying hand
+        for(int i=0;i<8;i++){
+            buyingImageViews[i].setImage(buyingHand.get(i).getImage());
+        }
+    }
+    public void renderPlayerHand() {
+        int index = 0;
+        //rendering the cards on player's hand
+        for (int i = 0; i < this.playerOne.getHands().size(); i++) {
+            playerHandsImageViews[i].setImage(playerOne.getHands().get(i).getImage());
+            index = i;
+        }
+        for(int j = index+1;j<Player.getMaxNumCardOnHand();j++){
+            playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
+        }
+        if(this.playerOne.getHands().size() == 0){
+            playerHandsImageViews[0].setImage(new Image("./Assets/blankCard.png"));
+        }
     }
 }
