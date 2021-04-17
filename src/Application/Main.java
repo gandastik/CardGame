@@ -1,5 +1,6 @@
 package Application;
 
+import Classes.FireTribe;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
