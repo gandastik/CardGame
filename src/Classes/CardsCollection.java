@@ -31,6 +31,7 @@ public class CardsCollection {
     public void addCardsToCollection(){
         //--------------------------------------LEVEL 1----------------------------------------------------
         //Fire
+
         cardsCollection.add(new FireTribe("Volcanic_Rat", 1, 20, 150, 4));
         cardsCollection.add(new FireTribe("Laval_Forest_Spirit", 1, 40, 160, 4));
         cardsCollection.add(new FireTribe("Inari_Fire", 1, 40, 170, 4));
@@ -106,6 +107,7 @@ public class CardsCollection {
         cardsCollection.add(new WaterTribe("The_Mermail",3,30,220,21));
         cardsCollection.add(new WaterTribe("Ice_Master",3,60,260,28));
         cardsCollection.add(new WaterTribe("Megician_Of_Prophecy",3,50,260,28));
+
     }
 
     //Methods

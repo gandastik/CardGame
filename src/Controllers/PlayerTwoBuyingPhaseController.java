@@ -149,6 +149,14 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         }
         return null;
     }
+    public Card getCardFromSelectBtn(String btnId){
+        for(int i=0;i<this.playerTwo.getHands().size();i++){
+            if(btnId.equals("btnP" + (i+1))){
+                return this.playerTwo.getHands().get(i);
+            }
+        }
+        return null;
+    }
     public void levelUPCard(){
         for(int i=0;i<this.playerTwo.getHands().size();i++){
             for(int j=i+1;j<this.playerTwo.getHands().size();j++){
@@ -238,6 +246,13 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
     }
     public void onSelect(ActionEvent e) {
         //Selected actions
+        String btnId = ((Button)e.getSource()).getId();
+        Card card = getCardFromSelectBtn(btnId);
+        if(this.playerTwo.getSelectedCard().size() < 4 && card != null && !this.playerTwo.getSelectedCard().contains(card)){
+            this.playerTwo.getSelectedCard().add(card);
+            System.out.println("added card name : " + card.getName());
+        }
+        System.out.println(this.playerTwo.getSelectedCard().size());
     }
     public void onRefresh(ActionEvent e) {
         this.levelUPCard();

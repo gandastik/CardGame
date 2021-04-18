@@ -26,8 +26,9 @@ public class BattlePhaseController implements Initializable {
     private Label playerOneName, playerTwoName, playerOneHp, playerTwoHp;
 
     @FXML
-    private ImageView imgP1_1, imgP1_2, imgP1_3, imgP1_4;
+    private ImageView imgP1_1, imgP1_2, imgP1_3, imgP1_4, imgP2_1, imgP2_2, imgP2_3, imgP2_4;
     private ImageView[] playerOneImgViews;
+    private ImageView[] playerTwoImgViews;
 
     Player playerOne;
     Player playerTwo;
@@ -36,7 +37,7 @@ public class BattlePhaseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.initPlayerOneCardImgViews();
-
+        this.initPlayerTwoCardImgViews();
     }
     public void initPlayerOneCardImgViews(){
         this.playerOneImgViews = new ImageView[4];
@@ -44,6 +45,13 @@ public class BattlePhaseController implements Initializable {
         this.playerOneImgViews[1] = imgP1_2;
         this.playerOneImgViews[2] = imgP1_3;
         this.playerOneImgViews[3] = imgP1_4;
+    }
+    public void initPlayerTwoCardImgViews() {
+        this.playerTwoImgViews = new ImageView[4];
+        this.playerTwoImgViews[0] = imgP2_1;
+        this.playerTwoImgViews[1] = imgP2_2;
+        this.playerTwoImgViews[2] = imgP2_3;
+        this.playerTwoImgViews[3] = imgP2_4;
     }
 
     //Receiving data
@@ -60,6 +68,7 @@ public class BattlePhaseController implements Initializable {
 
         //render
         this.renderPlayerOneCardImgViews();
+        this.renderPlayerTwoCardImgViews();
     }
 
     //Buttons Controllers
@@ -102,6 +111,11 @@ public class BattlePhaseController implements Initializable {
     public void renderPlayerOneCardImgViews() {
         for(int i=0;i<this.playerOne.getSelectedCard().size();i++){
             this.playerOneImgViews[i].setImage(this.playerOne.getSelectedCard().get(i).getImage());
+        }
+    }
+    public void renderPlayerTwoCardImgViews() {
+        for(int i=0;i<this.playerTwo.getSelectedCard().size();i++) {
+            this.playerTwoImgViews[i].setImage(this.playerTwo.getSelectedCard().get(i).getImage());
         }
     }
     public void renderPlyaersHp() {

@@ -54,5 +54,13 @@
             <ImageView fx:id="imgP1_4" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
+      <HBox layoutX="347.0" layoutY="157.0" prefHeight="200.0" prefWidth="630.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="imgP2_1" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgP2_2" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgP2_3" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgP2_4" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
