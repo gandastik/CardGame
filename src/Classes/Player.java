@@ -7,6 +7,7 @@ public class Player {
     private int hp;
     private int money;
     private ArrayList<Card> hands;
+    private ArrayList<Card> selectedCard;
     private static final int MAXNUMCARDONHAND = 7;
 
     //Constructor
@@ -15,12 +16,14 @@ public class Player {
         this.name = "name";
         this.money = 20;
         this.hands = new ArrayList<Card>();
+        this.selectedCard = new ArrayList<Card>();
     }
     public Player(String name){
         this.name = name;
         this.hp = 100;
         this.money = 99999;
         this.hands = new ArrayList<Card>();
+        this.selectedCard = new ArrayList<Card>();
     }
 
     //Getters
@@ -35,6 +38,9 @@ public class Player {
     }
     public ArrayList<Card> getHands() {
         return this.hands;
+    }
+    public ArrayList<Card> getSelectedCard() {
+        return this.selectedCard;
     }
     public static int getMaxNumCardOnHand(){
         return MAXNUMCARDONHAND;
@@ -63,5 +69,6 @@ public class Player {
     }
     public void removeCard(Card card) {
         this.hands.remove(card);
+        this.getSelectedCard().removeIf(card::equals);
     }
 }
