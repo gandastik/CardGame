@@ -84,16 +84,6 @@ public class BuyingPhaseController implements Initializable {
         this.playerHandsImageViews[5] = this.imgP6;
         this.playerHandsImageViews[6] = this.imgP7;
     }
-    public void initPlayerBlankImageViews() {
-        this.playerHandsImageViews = new ImageView[7];
-        this.playerHandsImageViews[0] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[1] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[2] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[3] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[4] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[5] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[6] = new ImageView("./Assets/blankCard.png");
-    }
     public void initBuyingCollection(){
         this.buyingCollection = new CardsCollection();
         this.buyingHand = buyingCollection.getCardsCollection();
