@@ -80,16 +80,6 @@ public class BuyingPhaseController implements Initializable {
         this.playerHandsImageViews[5] = this.imgP6;
         this.playerHandsImageViews[6] = this.imgP7;
     }
-    public void initPlayerHandsImageViewsBlank() {
-        this.playerHandsImageViews = new ImageView[7];
-        this.playerHandsImageViews[0] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[1] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[2] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[3] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[4] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[5] = new ImageView("./Assets/blankCard.png");
-        this.playerHandsImageViews[6] = new ImageView("./Assets/blankCard.png");
-    }
     public void initBuyingCollection(){
         this.buyingCollection = new CardsCollection();
         this.buyingHand = buyingCollection.getCardsCollection();
@@ -111,6 +101,15 @@ public class BuyingPhaseController implements Initializable {
         }
         return null;
     }
+    public int getIndexOfCardFromBuyingHand(String btnId) {
+        //returning the index of the card on the buying hand.
+        for(int i=0;i<8;i++){
+            if(btnId.equals("btn" + (i+1))){
+                return i;
+            }
+        }
+        return 0;
+    }
     public Card getCardFromSellingBtn(String btnId, Player player) {
         if(player.getName().equals(this.playerOne.getName())){
             for(int i=0;i<this.playerOne.getHands().size();i++){
@@ -119,7 +118,7 @@ public class BuyingPhaseController implements Initializable {
                 }
             }
         } else if (player.getName().equals(this.playerTwo.getName())) {
-            for(int i=0;i<Player.getMaxNumCardOnHand();i++){
+            for(int i=0;i<this.playerTwo.getHands().size();i++){
                 if(btnId.equals(this.playerTwo.getName())){
                     return this.playerTwo.getHands().get(i);
                 }
@@ -127,6 +126,17 @@ public class BuyingPhaseController implements Initializable {
         }
         else {
             throw new IllegalArgumentException("Invalid btnId or player");
+        }
+        return null;
+    }
+    public Card getLevelUpCard(){
+        for(int i=0;i<this.playerOne.getHands().size();i++){
+            for(int j=i+1;j<this.playerOne.getHands().size();j++){
+                if(this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j))){
+                    Card card = this.playerOne.getHands().get(i);
+                    return new Card(card.getName(), card.getTribe(), card.getLevel()+1, card.getDamage()+20, card.getHp()+20);
+                }
+            }
         }
         return null;
     }
@@ -152,8 +162,10 @@ public class BuyingPhaseController implements Initializable {
             //Buying Mechanic .. buy a card and remove it from the collection.
             String id =  ((Button)e.getSource()).getId();
             Card card = getCardFromBuyingHand(id);
+            int index = getIndexOfCardFromBuyingHand(id);
+            //Can not buy a blank card
             if(!card.getName().equals("blank") ) {
-                buyingCollection.removeCard(card);
+                buyingCollection.removeCardAt(index);
                 this.buyingHand = buyingCollection.getCardsCollection();
                 this.renderBuyingHand();
 
@@ -197,9 +209,11 @@ public class BuyingPhaseController implements Initializable {
             playerHandsImageViews[i].setImage(playerOne.getHands().get(i).getImage());
             index = i;
         }
+        //rendering blank card on the empty slot.
         for(int j = index+1;j<Player.getMaxNumCardOnHand();j++){
             playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
         }
+        //if no card on players hand let's the first slot be blankcard.
         if(this.playerOne.getHands().size() == 0){
             playerHandsImageViews[0].setImage(new Image("./Assets/blankCard.png"));
         }

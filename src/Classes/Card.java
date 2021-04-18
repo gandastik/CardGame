@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Card {
     protected int damage;
@@ -78,5 +79,13 @@ public class Card {
     //this methods will return the valid type of card
     public static List<String> getValidTribes() {
         return Arrays.asList("fire", "water", "rock");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return damage == card.damage && hp == card.hp && level == card.level && Objects.equals(name, card.name) && Objects.equals(tribe, card.tribe);
     }
 }

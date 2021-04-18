@@ -58,5 +58,9 @@ public class CardsCollection {
         cardsCollection.remove(card);
         cardsCollection.add(index, blankCard);
     }
-
+    //remove the card at a specific index (in case of there's the same card when using above methods)
+    public void removeCardAt(int index) {
+        cardsCollection.remove(index);
+        cardsCollection.add(index, blankCard);
+    }
 }
