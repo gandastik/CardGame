@@ -150,11 +150,11 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         return null;
     }
     public void levelUPCard(){
-        for(int i=0;i<this.playerOne.getHands().size();i++){
-            for(int j=i+1;j<this.playerOne.getHands().size();j++){
-                if(this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j))){
+        for(int i=0;i<this.playerOne.getHands().size();i++) {
+            for (int j = i + 1; j < this.playerOne.getHands().size(); j++) {
+                if (this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j)) && this.playerOne.getHands().get(i).getLevel() != 3) {
                     Card tempCard = this.playerOne.getHands().get(i);
-                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20, tempCard.getCost()+2);
+                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel() + 1, tempCard.getDamage() + 20, tempCard.getHp() + 20, tempCard.getCost() + 2);
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.addCard(newCard);
@@ -203,6 +203,9 @@ public class PlayerOneBuyingPhaseController implements Initializable {
                 this.playerOne.addCard(card);
                 //leveling up the duplicate card on the player's hand.
                 this.levelUPCard();
+                //incase of have the same level 2 card on the hand -> become level 3.
+                this.levelUPCard();
+
                 this.renderPlayerHand();
             }
         }

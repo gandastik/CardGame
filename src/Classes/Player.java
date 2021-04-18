@@ -19,7 +19,7 @@ public class Player {
     public Player(String name){
         this.name = name;
         this.hp = 100;
-        this.money = 20;
+        this.money = 99999;
         this.hands = new ArrayList<Card>();
     }
 
