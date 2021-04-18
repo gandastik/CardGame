@@ -158,7 +158,6 @@ public class PlayerOneBuyingPhaseController implements Initializable {
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.addCard(newCard);
-                    System.out.println("FOUND THE SAME ONE!");
                 }
             }
         }

@@ -48,8 +48,8 @@ public class BattlePhaseController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerOneBuyingPhase.fxml"));
         root = loader.load();
 
-        PlayerOneBuyingPhaseController buyingPhaseController = loader.getController();
-        buyingPhaseController.receiveData(this.playerOne, this.playerTwo);
+        PlayerOneBuyingPhaseController controller = loader.getController();
+        controller.receiveData(this.playerOne, this.playerTwo);
 
         //Switch to BuyingPhaseScene
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

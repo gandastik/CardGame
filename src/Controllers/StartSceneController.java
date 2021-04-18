@@ -29,10 +29,10 @@ public class StartSceneController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerOneBuyingPhase.fxml"));
         root = loader.load();
 
-        PlayerOneBuyingPhaseController buyingPhaseController = loader.getController();
+        PlayerOneBuyingPhaseController controller = loader.getController();
         this.playerOne = new Player(playerOneTextField.getText());
         this.playerTwo = new Player(playerTwoTextField.getText());
-        buyingPhaseController.receiveData(this.playerOne, this.playerTwo);
+        controller.receiveData(this.playerOne, this.playerTwo);
 
         //Switch to OpenScene also check if one of the text field is empty
         if(isTextFieldEmpty(playerOneTextField) || isTextFieldEmpty(playerTwoTextField)){
