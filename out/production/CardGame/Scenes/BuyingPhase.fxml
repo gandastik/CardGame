@@ -37,15 +37,20 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn1" mnemonicParsing="false" onAction="#onBuy" prefHeight="25.0" prefWidth="111.0" text="Buy">
+                        <Button fx:id="btn1" mnemonicParsing="false" onAction="#onBuy" prefHeight="12.0" prefWidth="105.0" text="Buy">
                            <font>
                               <Font name="Consolas" size="16.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost1" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -55,7 +60,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn2" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="110.0" text="Buy">
                            <font>
@@ -64,6 +69,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost2" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -73,7 +83,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn3" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="108.0" text="Buy">
                            <font>
@@ -82,6 +92,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost3" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -91,7 +106,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn4" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="108.0" text="Buy">
                            <font>
@@ -100,6 +115,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost4" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -109,7 +129,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn5" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="119.0" text="Buy">
                            <font>
@@ -118,6 +138,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost5" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -127,7 +152,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn6" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="119.0" text="Buy">
                            <font>
@@ -136,6 +161,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost6" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="134.43" prefWidth="104.55">
@@ -145,7 +175,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn7" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="124.0" text="Buy">
                            <font>
@@ -154,6 +184,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost7" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="134.43" prefWidth="104.55">
@@ -163,7 +198,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="12.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn8" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="108.0" text="Buy">
                            <font>
@@ -172,6 +207,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="labelCost8" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                     <font>
+                        <Font name="Consolas" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>
@@ -318,5 +358,15 @@
             <Font name="Consolas" size="20.0" />
          </font>
       </Button>
+      <Label fx:id="playerMoney" layoutX="67.0" layoutY="94.0" text="money : ">
+         <font>
+            <Font name="Consolas" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="rerollCostLabel" layoutX="693.0" layoutY="387.0" text="reroll cost : ">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

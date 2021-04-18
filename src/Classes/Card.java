@@ -14,14 +14,16 @@ public class Card {
     protected String name;
     protected String tribe;
     protected Image image;
+    protected int cost;
 
     //Constructors
-    public Card(String name, String tribe, int level, int damage, int hp) {
+    public Card(String name, String tribe, int level, int damage, int hp, int cost) {
         setName(name);
         setTribe(tribe);
         setLevel(level);
         setDamage(damage);
         setHp(hp);
+        setCost(cost);
         //assign the tribe and the name of the card to the images
         String fileName = this.tribe + "/" + this.name + "_" + this.level + ".png";
         this.image = new Image("./Assets/" +fileName);
@@ -40,6 +42,9 @@ public class Card {
     }
     public int getLevel() {
         return this.level;
+    }
+    public int getCost() {
+        return this.cost;
     }
     public String getName() {
         return this.name;
@@ -73,6 +78,9 @@ public class Card {
         }
         else
             throw new IllegalArgumentException("Valid types are " + validTribes);
+    }
+    public void setCost(int cost){
+        this.cost = cost;
     }
 
     //Methods

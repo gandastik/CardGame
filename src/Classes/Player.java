@@ -13,11 +13,13 @@ public class Player {
     public Player() {
         this.hp = 100;
         this.name = "name";
+        this.money = 20;
         this.hands = new ArrayList<Card>();
     }
     public Player(String name){
         this.name = name;
         this.hp = 100;
+        this.money = 20;
         this.hands = new ArrayList<Card>();
     }
 
@@ -52,6 +54,9 @@ public class Player {
     }
     public void addMoney(int amount) {
         this.money += amount;
+    }
+    public void takeMoney(int amount) {
+        this.money -= amount;
     }
     public void addCard(Card card) {
         this.hands.add(card);

@@ -30,31 +30,31 @@ public class BuyingPhaseController implements Initializable {
     Player playerTwo;
 
     @FXML
-    private Label playerOneName;
-    @FXML
-    private Label playerTwoName;
-    @FXML
-    private Label playerOneHp;
-    @FXML
-    private Label playerTwoHp;
+    private Label playerOneName, playerTwoName, playerMoney;
 
     @FXML
     //Buying tab
     private ImageView img1, img2, img3, img4, img5, img6, img7, img8;
+    private CardsCollection buyingCollection;
+    private ArrayList<Card> buyingHand;
+    private ImageView[] buyingImageViews;
+    @FXML
+    private Label labelCost1, labelCost2, labelCost3, labelCost4, labelCost5, labelCost6, labelCost7, labelCost8, rerollCostLabel;
+    private Label[] buyingLabelsCost;
+    private int rerollCost;
     //Player's Inventory (I guess?)
     @FXML
     private ImageView imgP1, imgP2, imgP3, imgP4, imgP5, imgP6, imgP7;
-    private ImageView[] buyingImageViews;
     private ImageView[] playerHandsImageViews;
-    private CardsCollection buyingCollection;
-    private ArrayList<Card> buyingHand;
 
 
     //Initializations
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.initVariables();
         this.initBuyingCollection();
         this.initBuyingImageViews();
+        this.initBuyingLabelsCost();
         this.initPlayerHandsImageViews();
         //rendering blank card on the empty slot.
         for(int j = 0;j<Player.getMaxNumCardOnHand();j++){
@@ -62,6 +62,8 @@ public class BuyingPhaseController implements Initializable {
         }
         //showing 8 cards for the player to buy
         this.renderBuyingHand();
+        this.renderCostBuying();
+        this.renderRerollCostLabel();
     }
     public void initBuyingImageViews() {
         this.buyingImageViews = new ImageView[8];
@@ -88,11 +90,30 @@ public class BuyingPhaseController implements Initializable {
         this.buyingCollection = new CardsCollection();
         this.buyingHand = buyingCollection.getCardsCollection();
     }
+    public void initPlayerMoney(){
+        int money = this.playerOne.getMoney();
+        this.playerMoney.setText("money : " + money);
+    }
+    public void initBuyingLabelsCost() {
+        this.buyingLabelsCost = new Label[8];
+        this.buyingLabelsCost[0] = this.labelCost1;
+        this.buyingLabelsCost[1] = this.labelCost2;
+        this.buyingLabelsCost[2] = this.labelCost3;
+        this.buyingLabelsCost[3] = this.labelCost4;
+        this.buyingLabelsCost[4] = this.labelCost5;
+        this.buyingLabelsCost[5] = this.labelCost6;
+        this.buyingLabelsCost[6] = this.labelCost7;
+        this.buyingLabelsCost[7] = this.labelCost8;
+    }
+    public void initVariables(){
+        this.rerollCost = 5;
+    }
 
     //Receiving data
     public void receiveData(Player one, Player two) {
         playerOne = one;
         playerTwo = two;
+        this.initPlayerMoney();
     }
 
     //Methods
@@ -138,7 +159,7 @@ public class BuyingPhaseController implements Initializable {
             for(int j=i+1;j<this.playerOne.getHands().size();j++){
                 if(this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j))){
                     Card tempCard = this.playerOne.getHands().get(i);
-                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20);
+                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20, tempCard.getCost()+2);
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.addCard(newCard);
@@ -146,6 +167,9 @@ public class BuyingPhaseController implements Initializable {
                 }
             }
         }
+    }
+    public void setLabelCostBlank(int index) {
+        this.buyingLabelsCost[index].setText("");
     }
 
     //Button Controllers
@@ -170,11 +194,16 @@ public class BuyingPhaseController implements Initializable {
             String id =  ((Button)e.getSource()).getId();
             Card card = getCardFromBuyingHand(id);
             int index = getIndexOfCardFromBuyingHand(id);
-            //Can not buy a blank card
-            if(!card.getName().equals("blank") ) {
+            //Cannot buy a blank card and need to have money more than or equal to the cost of the card that you are going to buy.
+            if(!card.getName().equals("blank") && this.playerOne.getMoney() >= card.getCost()) {
                 buyingCollection.removeCardAt(index);
                 this.buyingHand = buyingCollection.getCardsCollection();
+                this.setLabelCostBlank(index);
                 this.renderBuyingHand();
+
+                //Transaction -> take money away from player and then render the player's money on screen
+                this.playerOne.takeMoney(card.getCost());
+                this.renderPlayerMoney();
 
                 //add a card to player's hands
                 this.playerOne.addCard(card);
@@ -185,19 +214,29 @@ public class BuyingPhaseController implements Initializable {
         }
     }
     public void onReroll(ActionEvent e) {
-        //Reroll actions
-        buyingCollection.shuffle();
-        this.buyingHand = buyingCollection.getCardsCollection();
-        this.renderBuyingHand();
+        //Reroll actions -> checking if player have enough money to reroll
+        if(this.playerOne.getMoney() >= this.rerollCost){
+            this.playerOne.takeMoney(this.rerollCost);
+            buyingCollection.shuffle();
+            this.buyingHand = buyingCollection.getCardsCollection();
+            this.rerollCost += 3;
+            this.renderRerollCostLabel();
+            this.renderCostBuying();
+            this.renderBuyingHand();
+            this.renderPlayerMoney();
+        }
     }
     public void onSell(ActionEvent e) {
         //Selling actions on playerOne turn
         String id = ((Button)e.getSource()).getId();
         Card card = getCardFromSellingBtn(id, this.playerOne);
         if(card != null){
-            playerOne.removeCard(card);
-        }
+            this.playerOne.removeCard(card);
 
+            //Transaction -> add money to player and render the player's money on screen.
+            this.playerOne.addMoney(card.getCost());
+            this.renderPlayerMoney();
+        }
         this.renderPlayerHand();
     }
     public void onSelect(ActionEvent e) {
@@ -212,7 +251,7 @@ public class BuyingPhaseController implements Initializable {
     public void renderBuyingHand() {
         //rendering the cards on the buying hand
         for(int i=0;i<8;i++){
-            buyingImageViews[i].setImage(buyingHand.get(i).getImage());
+            this.buyingImageViews[i].setImage(buyingHand.get(i).getImage());
         }
     }
     public void renderPlayerHand() {
@@ -230,5 +269,16 @@ public class BuyingPhaseController implements Initializable {
         if(this.playerOne.getHands().size() == 0){
             playerHandsImageViews[0].setImage(new Image("./Assets/blankCard.png"));
         }
+    }
+    public void renderPlayerMoney() {
+        this.playerMoney.setText("money : " + this.playerOne.getMoney());
+    }
+    public void renderCostBuying() {
+        for(int i=0;i<8;i++){
+            this.buyingLabelsCost[i].setText("cost : " + buyingHand.get(i).getCost());
+        }
+    }
+    public void renderRerollCostLabel() {
+        this.rerollCostLabel.setText("reroll cost : " + this.rerollCost);
     }
 }
