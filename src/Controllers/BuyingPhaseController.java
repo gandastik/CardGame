@@ -56,6 +56,10 @@ public class BuyingPhaseController implements Initializable {
         this.initBuyingCollection();
         this.initBuyingImageViews();
         this.initPlayerHandsImageViews();
+        //rendering blank card on the empty slot.
+        for(int j = 0;j<Player.getMaxNumCardOnHand();j++){
+            playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
+        }
         //showing 8 cards for the player to buy
         this.renderBuyingHand();
     }
@@ -79,6 +83,16 @@ public class BuyingPhaseController implements Initializable {
         this.playerHandsImageViews[4] = this.imgP5;
         this.playerHandsImageViews[5] = this.imgP6;
         this.playerHandsImageViews[6] = this.imgP7;
+    }
+    public void initPlayerBlankImageViews() {
+        this.playerHandsImageViews = new ImageView[7];
+        this.playerHandsImageViews[0] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[1] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[2] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[3] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[4] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[5] = new ImageView("./Assets/blankCard.png");
+        this.playerHandsImageViews[6] = new ImageView("./Assets/blankCard.png");
     }
     public void initBuyingCollection(){
         this.buyingCollection = new CardsCollection();
@@ -129,16 +143,19 @@ public class BuyingPhaseController implements Initializable {
         }
         return null;
     }
-    public Card getLevelUpCard(){
+    public void levelUPCard(){
         for(int i=0;i<this.playerOne.getHands().size();i++){
             for(int j=i+1;j<this.playerOne.getHands().size();j++){
                 if(this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j))){
-                    Card card = this.playerOne.getHands().get(i);
-                    return new Card(card.getName(), card.getTribe(), card.getLevel()+1, card.getDamage()+20, card.getHp()+20);
+                    Card tempCard = this.playerOne.getHands().get(i);
+                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20);
+                    this.playerOne.removeCard(tempCard);
+                    this.playerOne.removeCard(tempCard);
+                    this.playerOne.addCard(newCard);
+                    System.out.println("FOUND THE SAME ONE!");
                 }
             }
         }
-        return null;
     }
 
     //Button Controllers
@@ -171,6 +188,8 @@ public class BuyingPhaseController implements Initializable {
 
                 //add a card to player's hands
                 this.playerOne.addCard(card);
+                //leveling up the duplicate card on the player's hand.
+                this.levelUPCard();
                 this.renderPlayerHand();
             }
         }
@@ -193,6 +212,10 @@ public class BuyingPhaseController implements Initializable {
     }
     public void onSelect(ActionEvent e) {
        //Selected actions
+    }
+    public void onRefresh(ActionEvent e) {
+        this.levelUPCard();
+        this.renderPlayerHand();
     }
 
     //Rendering

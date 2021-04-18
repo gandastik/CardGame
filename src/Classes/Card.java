@@ -23,7 +23,7 @@ public class Card {
         setDamage(damage);
         setHp(hp);
         //assign the tribe and the name of the card to the images
-        String fileName = this.tribe + "_" + this.name + "_" + this.level + ".png";
+        String fileName = this.tribe + "/" + this.name + "_" + this.level + ".png";
         this.image = new Image("./Assets/" +fileName);
     }
     public Card(){
