@@ -45,12 +45,11 @@ public class BattlePhaseController {
 
     public void onNext(ActionEvent e) throws Exception{
         //send player names to BuyingPhaseController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BuyingPhase.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerOneBuyingPhase.fxml"));
         root = loader.load();
 
-        BuyingPhaseController buyingPhaseController = loader.getController();
+        PlayerOneBuyingPhaseController buyingPhaseController = loader.getController();
         buyingPhaseController.receiveData(this.playerOne, this.playerTwo);
-        buyingPhaseController.renderPlayerHand();
 
         //Switch to BuyingPhaseScene
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

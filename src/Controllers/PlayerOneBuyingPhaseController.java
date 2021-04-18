@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class BuyingPhaseController implements Initializable {
+public class PlayerOneBuyingPhaseController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -114,6 +114,7 @@ public class BuyingPhaseController implements Initializable {
         playerOne = one;
         playerTwo = two;
         this.initPlayerMoney();
+        this.renderPlayerHand();
     }
 
     //Methods
@@ -136,16 +137,10 @@ public class BuyingPhaseController implements Initializable {
         return 0;
     }
     public Card getCardFromSellingBtn(String btnId, Player player) {
-        if(player.getName().equals(this.playerOne.getName())){
-            for(int i=0;i<this.playerOne.getHands().size();i++){
-                if(btnId.equals("sell" + (i+1))){
+        if(player.getName().equals(this.playerOne.getName())) {
+            for (int i = 0; i < this.playerOne.getHands().size(); i++) {
+                if (btnId.equals("sell" + (i + 1))) {
                     return this.playerOne.getHands().get(i);
-                }
-            }
-        } else if (player.getName().equals(this.playerTwo.getName())) {
-            for(int i=0;i<this.playerTwo.getHands().size();i++){
-                if(btnId.equals(this.playerTwo.getName())){
-                    return this.playerTwo.getHands().get(i);
                 }
             }
         }
@@ -175,10 +170,10 @@ public class BuyingPhaseController implements Initializable {
     //Button Controllers
     public void onNext(ActionEvent e) throws Exception{
         //send players object to BattlePhaseController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BattlePhase.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerTwoBuyingPhase.fxml"));
         root = loader.load();
 
-        BattlePhaseController controller = loader.getController();
+        PlayerTwoBuyingPhaseController controller = loader.getController();
         controller.receiveData(this.playerOne, this.playerTwo);
 
         //Switch to BattlePhaseScene

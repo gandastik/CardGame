@@ -1,8 +1,5 @@
 package Application;
 
-import Classes.Card;
-import Classes.FireTribe;
-import Controllers.BuyingPhaseController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

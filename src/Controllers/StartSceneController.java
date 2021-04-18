@@ -26,10 +26,10 @@ public class StartSceneController {
 
     public void onOk(ActionEvent e) throws Exception{
         //send players object to BuyingPhaseController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BuyingPhase.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerOneBuyingPhase.fxml"));
         root = loader.load();
 
-        BuyingPhaseController buyingPhaseController = loader.getController();
+        PlayerOneBuyingPhaseController buyingPhaseController = loader.getController();
         this.playerOne = new Player(playerOneTextField.getText());
         this.playerTwo = new Player(playerTwoTextField.getText());
         buyingPhaseController.receiveData(this.playerOne, this.playerTwo);

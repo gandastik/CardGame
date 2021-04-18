@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BuyingPhaseController">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlayerOneBuyingPhaseController">
    <children>
-      <Label layoutX="391.0" layoutY="27.0" text="BUYING PHASE">
+      <Label layoutX="357.0" layoutY="29.0" text="BUYING PHASE 1">
          <font>
             <Font name="Consolas" size="72.0" />
          </font>
