@@ -162,7 +162,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
             for (int j = i + 1; j < this.playerOne.getHands().size(); j++) {
                 if (this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j)) && this.playerOne.getHands().get(i).getLevel() != 3) {
                     Card tempCard = this.playerOne.getHands().get(i);
-                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel() + 1, tempCard.getDamage() + 20, tempCard.getHp() + 20, tempCard.getCost() + 2);
+                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel() + 1, tempCard.getDamage() + 20, tempCard.getHp() + 20, tempCard.getCost() + 2,tempCard.getSpeed());
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.removeCard(tempCard);
                     this.playerOne.addCard(newCard);

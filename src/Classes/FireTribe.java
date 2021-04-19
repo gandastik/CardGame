@@ -5,8 +5,8 @@ import java.util.List;
 
 public class FireTribe extends Card{
     //Constructor
-    public FireTribe(String name, int level, int damage, int hp, int cost) {
-        super(name,"fire", level, damage, hp, cost);
+    public FireTribe(String name, int level, int damage, int hp, int cost,int speed) {
+        super(name,"fire", level, damage, hp, cost, speed);
     }
 
     //Methods

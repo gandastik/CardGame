@@ -16,14 +16,21 @@ public class Card {
     protected Image image;
     protected int cost;
 
+
+
+
+
+    protected int speed;
+
     //Constructors
-    public Card(String name, String tribe, int level, int damage, int hp, int cost) {
+    public Card(String name, String tribe, int level, int damage, int hp, int cost, int speed) {
         setName(name);
         setTribe(tribe);
         setLevel(level);
         setDamage(damage);
         setHp(hp);
         setCost(cost);
+        setSpeed(speed);
         //assign the tribe and the name of the card to the images
         String fileName = this.tribe + "/" + this.name + "_" + this.level + ".png";
         this.image = new Image("./Assets/" +fileName);
@@ -55,6 +62,9 @@ public class Card {
     public Image getImage() {
         return this.image;
     }
+    public int getSpeed() {
+        return this.speed;
+    }
 
     //Setters
     public void setDamage(int damage) {
@@ -81,6 +91,9 @@ public class Card {
     }
     public void setCost(int cost){
         this.cost = cost;
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     //Methods
