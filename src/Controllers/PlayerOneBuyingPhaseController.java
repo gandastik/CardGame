@@ -150,14 +150,6 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         }
         return null;
     }
-    public Card getCardFromSelectBtn(String btnId){
-        for(int i=0;i<this.playerOne.getHands().size();i++){
-            if(btnId.equals("btnP" + (i+1))){
-                return this.playerOne.getHands().get(i);
-            }
-        }
-        return null;
-    }
     public Card getCardFromSelectImg(String imgId) {
         //return card on player' hand when clicking on it's img.
         for(int i=0;i<this.playerOne.getHands().size();i++){
@@ -263,16 +255,6 @@ public class PlayerOneBuyingPhaseController implements Initializable {
             this.renderPlayerMoney();
         }
         this.renderPlayerHand();
-    }
-    public void onSelect(ActionEvent e) {
-       //Selected actions
-        String btnId = ((Button)e.getSource()).getId();
-        Card card = getCardFromSelectBtn(btnId);
-        if(this.playerOne.getSelectedCard().size() < 4 && card != null && !this.playerOne.getSelectedCard().contains(card)){
-            this.playerOne.getSelectedCard().add(card);
-            System.out.println("added card name : " + card.getName());
-        }
-        System.out.println(this.playerOne.getSelectedCard().size());
     }
     public void onRefresh(ActionEvent e) {
         this.levelUPCard();
