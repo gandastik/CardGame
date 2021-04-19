@@ -162,7 +162,7 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
             for(int j=i+1;j<this.playerTwo.getHands().size();j++){
                 if(this.playerTwo.getHands().get(i).equals(this.playerTwo.getHands().get(j)) && this.playerTwo.getHands().get(i).getLevel() != 3){
                     Card tempCard = this.playerTwo.getHands().get(i);
-                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20, tempCard.getCost()+2);
+                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20, tempCard.getCost()+2, tempCard.getSpeed());
                     this.playerTwo.removeCard(tempCard);
                     this.playerTwo.removeCard(tempCard);
                     this.playerTwo.addCard(newCard);
