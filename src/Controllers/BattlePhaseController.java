@@ -13,11 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class BattlePhaseController implements Initializable {
@@ -33,13 +36,17 @@ public class BattlePhaseController implements Initializable {
     private ImageView imgP1_1, imgP1_2, imgP1_3, imgP1_4, imgP2_1, imgP2_2, imgP2_3, imgP2_4;
     private ImageView[] playerOneImgViews;
     private ImageView[] playerTwoImgViews;
-
     @FXML
     private Label hpP1_1, hpP1_2, hpP1_3, hpP1_4, hpP2_1, hpP2_2, hpP2_3, hpP2_4;
     private ArrayList<Label> hpCards;
 
     @FXML
+    private HBox hboxP2;
+
+    @FXML
     private Button attackBtnP1_1, attackBtnP1_2, attackBtnP1_3, attackBtnP1_4, skillBtnP1_1, skillBtnP1_2, skillBtnP1_3, skillBtnP1_4;
+    @FXML
+    private Button attackBtnP2_1, attackBtnP2_2, attackBtnP2_3, attackBtnP2_4, skillBtnP2_1, skillBtnP2_2, skillBtnP2_3, skillBtnP2_4;
     private ArrayList<Button> skillButtons;
     private ArrayList<Button> attackButtons;
 
@@ -48,6 +55,8 @@ public class BattlePhaseController implements Initializable {
 
     private ArrayList<Card> cardsOnArena;
     private int indexOfCard;
+
+    private Boolean isAttack;
 
     //Initializations
     @Override
@@ -78,27 +87,39 @@ public class BattlePhaseController implements Initializable {
         this.cardsOnArena = new ArrayList<Card>();
         this.cardsOnArena.addAll(playerOne.getSelectedCard());
         this.cardsOnArena.addAll(playerTwo.getSelectedCard());
+        this.sortCardsOnArenaBySpeed();
     }
     public void initHpCards() {
         this.hpCards = new ArrayList<Label>();
         this.hpCards.addAll(Arrays.asList(hpP1_1, hpP1_2, hpP1_3, hpP1_4, hpP2_1, hpP2_2, hpP2_3, hpP2_4));
     }
     public void initSkillButtons(){
+        this.skillButtons = new ArrayList<Button>();
         this.skillBtnP1_1.setVisible(false);
         this.skillBtnP1_2.setVisible(false);
         this.skillBtnP1_3.setVisible(false);
         this.skillBtnP1_4.setVisible(false);
-        this.skillButtons.addAll(Arrays.asList(skillBtnP1_1, skillBtnP1_2, skillBtnP1_3, skillBtnP1_4));
+        this.skillBtnP2_1.setVisible(false);
+        this.skillBtnP2_2.setVisible(false);
+        this.skillBtnP2_3.setVisible(false);
+        this.skillBtnP2_4.setVisible(false);
+        this.skillButtons.addAll(Arrays.asList(skillBtnP1_1, skillBtnP1_2, skillBtnP1_3, skillBtnP1_4, skillBtnP2_1, skillBtnP2_2, skillBtnP2_3, skillBtnP2_4));
     }
     public void initAttackButtons() {
+        this.attackButtons = new ArrayList<Button>();
         this.attackBtnP1_1.setVisible(false);
         this.attackBtnP1_2.setVisible(false);
         this.attackBtnP1_3.setVisible(false);
         this.attackBtnP1_4.setVisible(false);
-        this.attackButtons.addAll(Arrays.asList(attackBtnP1_1, attackBtnP1_2, attackBtnP1_3, attackBtnP1_4));
+        this.attackBtnP2_1.setVisible(false);
+        this.attackBtnP2_2.setVisible(false);
+        this.attackBtnP2_3.setVisible(false);
+        this.attackBtnP2_4.setVisible(false);
+        this.attackButtons.addAll(Arrays.asList(attackBtnP1_1, attackBtnP1_2, attackBtnP1_3, attackBtnP1_4, attackBtnP2_1, attackBtnP2_2, attackBtnP2_3, attackBtnP2_4));
     }
     public void initVariables(){
         this.indexOfCard = 0;
+        this.isAttack = false;
     }
 
     //Receiving data
@@ -118,10 +139,11 @@ public class BattlePhaseController implements Initializable {
         this.renderPlayerOneCardImgViews();
         this.renderPlayerTwoCardImgViews();
         this.renderCardsHp();
+
+        this.thisTurn();
     }
 
     //Methods
-    /*
     public void sortCardsOnArenaBySpeed() {
         for(int i=0;i<this.cardsOnArena.size();i++){
             for(int j=i+1;j<this.cardsOnArena.size();j++){
@@ -130,7 +152,7 @@ public class BattlePhaseController implements Initializable {
                 }
             }
         }
-    }*/
+    }
     public void thisTurn( ){
         Card cardThisTurn = cardsOnArena.get(this.indexOfCard);
         Player player = cardThisTurn.getSelectedBy();
@@ -142,7 +164,7 @@ public class BattlePhaseController implements Initializable {
             prefix = "P2";
         }
         int index = player.getSelectedCard().indexOf(cardThisTurn);
-        showButton(prefix, index);
+        this.showButton(prefix, index);
     }
     public void endTurn() {
         this.indexOfCard += 1;
@@ -161,19 +183,31 @@ public class BattlePhaseController implements Initializable {
                 }
             }
         }
-        else{
+        else if(prefix.equals("P2")){
             for(int i=4;i<this.attackButtons.size();i++) {
-                if(i == index){
+                if(i == index+4){
                     this.attackButtons.get(i).setVisible(true);
                 }
             }
             for(int i=4;i<this.skillButtons.size();i++) {
-                if(i == index) {
+                if(i == index+4) {
                     this.skillButtons.get(i).setVisible(true);
                 }
             }
         }
     }
+//    public Card getCardByClickOnImg(String imgId) {
+//        if(imgId.startsWith("imgP1")){
+//            for(int i=0;i<this.cardsOnArena.size();i++){
+////                if(imgId.equals("imgP1_" + )){
+////                    return this.cardsOnArena.get(i);
+//                }
+//            }
+//        }
+//        else if(imgId.startsWith("imgP2")) {
+//
+//        }
+//    }
 
     //Buttons Controllers
     public void onNext(ActionEvent e) throws Exception{
@@ -210,14 +244,31 @@ public class BattlePhaseController implements Initializable {
             imgV.setScaleY(1);
         });
     }
+    public void onSelect(MouseEvent e) {
+        ImageView imgV = (ImageView)e.getSource();
+        System.out.println("CLICKED!!!!");
+        //check if this attack button is hit, if the card turn is on playerOne arena
+        if(this.isAttack && cardsOnArena.get(indexOfCard).getSelectedBy().getName().equals(this.playerOne.getName())){
+
+        }
+    }
     public void onAttack(ActionEvent e) {
         //Attack actions
         Button thisButton = (Button)e.getSource();
         int indexOfThisButton = this.attackButtons.indexOf(thisButton);
+        this.isAttack = true;
+        //Player one card press attack -> need to show that you can select enemy card to attack.
+        //Check if hit the button of player's one hands -> change opacity of card to show that you can not click the friendly card.
         if(indexOfThisButton < 4) {
-
+            for(int i=0;i<this.playerOneImgViews.length;i++){
+                this.playerOneImgViews[i].setOpacity(0.25);
+            }
         }
-        this.endTurn();
+        else {
+            for(int i=0;i<this.playerTwoImgViews.length;i++){
+                this.playerTwoImgViews[i].setOpacity(0.25);
+            }
+        }
     }
     public void onSkill(ActionEvent e) {
         //Skill Actions

@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -149,14 +150,6 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         }
         return null;
     }
-    public Card getCardFromSelectBtn(String btnId){
-        for(int i=0;i<this.playerTwo.getHands().size();i++){
-            if(btnId.equals("btnP" + (i+1))){
-                return this.playerTwo.getHands().get(i);
-            }
-        }
-        return null;
-    }
     public void levelUPCard(){
         for(int i=0;i<this.playerTwo.getHands().size();i++){
             for(int j=i+1;j<this.playerTwo.getHands().size();j++){
@@ -173,6 +166,15 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
     }
     public void setLabelCostBlank(int index) {
         this.buyingLabelsCost[index].setText("");
+    }
+    public Card getCardFromSelectImg(String imgId) {
+        //return card on player' hand when clicking on it's img.
+        for(int i=0;i<this.playerTwo.getHands().size();i++){
+            if(imgId.equals("imgP" + (i+1))){
+                return this.playerTwo.getHands().get(i);
+            }
+        }
+        return null;
     }
 
     //Button Controllers
@@ -244,19 +246,30 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         }
         this.renderPlayerHand();
     }
-    public void onSelect(ActionEvent e) {
-        //Selected actions
-        String btnId = ((Button)e.getSource()).getId();
-        Card card = getCardFromSelectBtn(btnId);
-        if(this.playerTwo.getSelectedCard().size() < 4 && card != null && !this.playerTwo.getSelectedCard().contains(card)){
-            this.playerTwo.getSelectedCard().add(card);
-            System.out.println("added card name : " + card.getName());
-        }
-        System.out.println(this.playerTwo.getSelectedCard().size());
-    }
     public void onRefresh(ActionEvent e) {
         this.levelUPCard();
         this.renderPlayerHand();
+    }
+    public void onSelectImg(MouseEvent e) {
+        //click on img to select card to go to the arena.
+        ImageView imgClicked = (ImageView)e.getSource();
+        String imgId = ((ImageView) e.getSource()).getId();
+        Card card = getCardFromSelectImg(imgId);
+        if(this.playerTwo.getSelectedCard().size() < 4 && card != null && !this.playerTwo.getSelectedCard().contains(card)){
+            System.out.println("added card : " + card.getName());
+            card.setSelectedBy(this.playerTwo);
+            this.playerTwo.getSelectedCard().add(card);
+            imgClicked.setScaleX(1.25);
+            imgClicked.setScaleY(1.25);
+        }
+        else if(this.playerTwo.getSelectedCard().contains(card)){
+            System.out.println("removed card : " + card.getName());
+            card.setUnSelected();
+            this.playerTwo.getSelectedCard().remove(card);
+            imgClicked.setScaleX(1);
+            imgClicked.setScaleY(1);
+        }
+        System.out.println(playerTwo.getSelectedCard().size());
     }
 
     //Rendering
@@ -276,10 +289,14 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         //rendering blank card on the empty slot.
         for(int j = index+1;j<Player.getMaxNumCardOnHand();j++){
             playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
+            playerHandsImageViews[j].setScaleX(1);
+            playerHandsImageViews[j].setScaleY(1);
         }
         //if no card on players hand let's the first slot be blankcard.
         if(this.playerTwo.getHands().size() == 0){
             playerHandsImageViews[0].setImage(new Image("./Assets/blankCard.png"));
+            playerHandsImageViews[0].setScaleX(1);
+            playerHandsImageViews[0].setScaleY(1);
         }
     }
     public void renderPlayerMoney() {

@@ -18,6 +18,7 @@ public class Card {
     protected int cost;
     protected Player selectedBy;
     protected int speed;
+    protected Boolean isDead = false;
 
     //Constructors
     public Card(String name, String tribe, int level, int damage, int hp, int cost, int speed) {
@@ -69,6 +70,9 @@ public class Card {
     public int getMaxHp() {
         return this.maxHp;
     }
+    public Boolean getIsDead() {
+        return this.isDead;
+    }
 
     //Setters
     public void setDamage(int damage) {
@@ -113,6 +117,12 @@ public class Card {
     //this methods will return the valid type of card
     public static List<String> getValidTribes() {
         return Arrays.asList("fire", "water", "rock");
+    }
+    public void takeDmg(int dmg){
+        this.hp -= dmg;
+        if(this.hp <= 0){
+            this.isDead = true;
+        }
     }
 
     @Override

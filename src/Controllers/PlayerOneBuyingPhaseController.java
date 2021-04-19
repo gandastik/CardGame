@@ -195,12 +195,12 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     //Button Controllers
     public void onNext(ActionEvent e) throws Exception{
         //send players object to BattlePhaseController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BattlePhase.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerTwoBuyingPhase.fxml"));
         root = loader.load();
 
         //Change to playerTwoBuyingPhaseController later when done dev. and change the entire of playerTwoController to
         // be duplicate of playerOne
-        BattlePhaseController controller = loader.getController();
+        PlayerTwoBuyingPhaseController controller = loader.getController();
         controller.receiveData(this.playerOne, this.playerTwo);
 
         //Switch to BattlePhaseScene
@@ -322,10 +322,14 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         //rendering blank card on the empty slot.
         for(int j = index+1;j<Player.getMaxNumCardOnHand();j++){
             playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
+            playerHandsImageViews[j].setScaleX(1);
+            playerHandsImageViews[j].setScaleY(1);
         }
         //if no card on players hand let's the first slot be blank card.
         if(this.playerOne.getHands().size() == 0){
             playerHandsImageViews[0].setImage(new Image("./Assets/blankCard.png"));
+            playerHandsImageViews[0].setScaleX(1);
+            playerHandsImageViews[0].setScaleY(1);
         }
     }
     public void renderPlayerMoney() {

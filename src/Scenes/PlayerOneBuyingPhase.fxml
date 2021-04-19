@@ -223,12 +223,7 @@
                   <ImageView fx:id="imgP1" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP1" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell1" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell1" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -242,12 +237,7 @@
                   <ImageView fx:id="imgP2" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP2" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell2" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell2" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="160.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -261,12 +251,7 @@
                   <ImageView fx:id="imgP3" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP3" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell3" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell3" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="154.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -280,12 +265,7 @@
                   <ImageView fx:id="imgP4" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP4" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell4" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell4" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="157.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -299,12 +279,7 @@
                   <ImageView fx:id="imgP5" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP5" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell5" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell5" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -318,12 +293,7 @@
                   <ImageView fx:id="imgP6" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP6" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell6" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell6" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="166.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -337,12 +307,7 @@
                   <ImageView fx:id="imgP7" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnP7" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sell7" mnemonicParsing="false" onAction="#onSell" prefHeight="29.0" prefWidth="81.0" text="sell">
+                        <Button fx:id="sell7" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
