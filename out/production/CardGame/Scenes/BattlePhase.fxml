@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -45,22 +46,128 @@
             <Font name="Consolas" size="20.0" />
          </font>
       </Label>
-      <Line endX="653.3333740234375" layoutX="367.0" layoutY="371.0" startX="-100.0" />
+      <Line endX="653.3333740234375" layoutX="367.0" layoutY="375.0" startX="-100.0" />
       <HBox layoutX="346.0" layoutY="388.0" prefHeight="200.0" prefWidth="630.0" spacing="10.0">
          <children>
-            <ImageView fx:id="imgP1_1" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgP1_2" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgP1_3" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgP1_4" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="attackBtnP1_1" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Attack" />
+                        <Button fx:id="skillBtnP1_1" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="imgP1_1" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP1_1" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="attackBtnP1_2" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Attack" />
+                        <Button fx:id="skillBtnP1_2" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="imgP1_2" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP1_2" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="attackBtnP1_3" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Attack" />
+                        <Button fx:id="skillBtnP1_3" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="imgP1_3" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP1_3" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="attackBtnP1_4" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Attack" />
+                        <Button fx:id="skillBtnP1_4" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="imgP1_4" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP1_4" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </HBox>
       <HBox layoutX="347.0" layoutY="157.0" prefHeight="200.0" prefWidth="630.0" spacing="10.0">
          <children>
-            <ImageView fx:id="imgP2_1" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgP2_2" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgP2_3" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgP2_4" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="imgP2_1" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP2_1" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="imgP2_2" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP2_2" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="imgP2_3" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP2_3" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="imgP2_4" fitHeight="200.0" fitWidth="150.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="hpP2_4" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </HBox>
+      <Button fx:id="attackBtn" layoutX="743.0" layoutY="644.0" mnemonicParsing="false" onAction="#onAttack" text="ATTACK">
+         <font>
+            <Font name="Consolas" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="850.0" layoutY="644.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="92.0" text="SKILL">
+         <font>
+            <Font name="Consolas" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

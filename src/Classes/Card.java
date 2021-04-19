@@ -10,16 +10,13 @@ import java.util.Objects;
 public class Card {
     protected int damage;
     protected int hp;
+    protected int maxHp;
     protected int level;
     protected String name;
     protected String tribe;
     protected Image image;
     protected int cost;
-
-
-
-
-
+    protected Player selectedBy;
     protected int speed;
 
     //Constructors
@@ -29,6 +26,7 @@ public class Card {
         setLevel(level);
         setDamage(damage);
         setHp(hp);
+        setMaxHp(hp);
         setCost(cost);
         setSpeed(speed);
         //assign the tribe and the name of the card to the images
@@ -65,6 +63,12 @@ public class Card {
     public int getSpeed() {
         return this.speed;
     }
+    public Player getSelectedBy() {
+        return this.selectedBy;
+    }
+    public int getMaxHp() {
+        return this.maxHp;
+    }
 
     //Setters
     public void setDamage(int damage) {
@@ -94,6 +98,15 @@ public class Card {
     }
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+    public void setSelectedBy(Player player){
+        this.selectedBy = player;
+    }
+    public void setUnSelected(){
+        this.selectedBy = null;
+    }
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
     }
 
     //Methods

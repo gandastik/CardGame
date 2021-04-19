@@ -220,7 +220,7 @@
          <children>
             <VBox fx:id="playerHand1" prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP1" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP1" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP1" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
@@ -239,7 +239,7 @@
             </VBox>
             <VBox prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP2" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP2" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP2" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
@@ -258,7 +258,7 @@
             </VBox>
             <VBox prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP3" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP3" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP3" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
@@ -277,7 +277,7 @@
             </VBox>
             <VBox prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP4" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP4" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP4" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
@@ -296,7 +296,7 @@
             </VBox>
             <VBox prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP5" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP5" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP5" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
@@ -315,7 +315,7 @@
             </VBox>
             <VBox prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP6" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP6" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP6" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
@@ -334,7 +334,7 @@
             </VBox>
             <VBox prefHeight="196.06" prefWidth="152.49">
                <children>
-                  <ImageView fx:id="imgP7" fitHeight="196.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP7" fitHeight="196.0" fitWidth="154.0" onMouseClicked="#onSelectImg" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnP7" mnemonicParsing="false" onAction="#onSelect" prefHeight="28.0" prefWidth="74.0" text="select">
