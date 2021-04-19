@@ -1,5 +1,6 @@
 package Controllers;
 
+import Classes.Card;
 import Classes.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class BattlePhaseController implements Initializable {
@@ -30,8 +33,10 @@ public class BattlePhaseController implements Initializable {
     private ImageView[] playerOneImgViews;
     private ImageView[] playerTwoImgViews;
 
-    Player playerOne;
-    Player playerTwo;
+    private Player playerOne;
+    private Player playerTwo;
+
+    private ArrayList<Card> cardsOnArena;
 
     //Initializations
     @Override
@@ -53,11 +58,19 @@ public class BattlePhaseController implements Initializable {
         this.playerTwoImgViews[2] = imgP2_3;
         this.playerTwoImgViews[3] = imgP2_4;
     }
+    public void initCardsOnArena() {
+        this.cardsOnArena = new ArrayList<Card>();
+        this.cardsOnArena.addAll(playerOne.getSelectedCard());
+        this.cardsOnArena.addAll(playerTwo.getSelectedCard());
+    }
 
     //Receiving data
     public void receiveData(Player one, Player two){
         playerOne = one;
         playerTwo = two;
+
+        //Initializations
+        this.initCardsOnArena();
 
         //Display the name on the screen
         this.playerOneName.setText("Player One: " + playerOne.getName());
@@ -70,6 +83,18 @@ public class BattlePhaseController implements Initializable {
         this.renderPlayerOneCardImgViews();
         this.renderPlayerTwoCardImgViews();
     }
+
+    //Methods
+    /*
+    public void sortCardsOnArenaBySpeed() {
+        for(int i=0;i<this.cardsOnArena.size();i++){
+            for(int j=i+1;j<this.cardsOnArena.size();j++){
+                if(this.cardsOnArena.get(i).getSpeed() < this.cardsOnArena.get(j).getSpeed() ){
+                    Collections.swap(this.cardsOnArena, i, j);
+                }
+            }
+        }
+    }*/
 
     //Buttons Controllers
     public void onNext(ActionEvent e) throws Exception{
@@ -96,6 +121,7 @@ public class BattlePhaseController implements Initializable {
         imgV.setOnMouseEntered(c -> {
             imgV.setScaleX(1.25);
             imgV.setScaleY(1.25);
+//            imgV.setStyle("-fx-border-color: #545454;");
         });
     }
     public void onMouseExited(MouseEvent e){
@@ -105,7 +131,6 @@ public class BattlePhaseController implements Initializable {
             imgV.setScaleY(1);
         });
     }
-
 
     //Render
     public void renderPlayerOneCardImgViews() {

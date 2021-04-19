@@ -113,7 +113,7 @@ public class CardsCollection {
     //Methods
     public void shuffle(){
         //remove a blank card out of a collection and then refill the collection.
-        cardsCollection.removeIf(card -> card.getName().equals("blank"));
+        cardsCollection = new ArrayList<Card>();
         this.addCardsToCollection();
         Collections.shuffle(this.cardsCollection);
     }

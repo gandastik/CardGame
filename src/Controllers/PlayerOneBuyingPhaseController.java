@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -157,14 +158,23 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         }
         return null;
     }
+    public Card getCardFromSelectImg(String imgId) {
+        //return card on player' hand when clicking on it's img.
+        for(int i=0;i<this.playerOne.getHands().size();i++){
+            if(imgId.equals("imgP" + (i+1))){
+                return this.playerOne.getHands().get(i);
+            }
+        }
+        return null;
+    }
     public void levelUPCard(){
         for(int i=0;i<this.playerOne.getHands().size();i++) {
             for (int j = i + 1; j < this.playerOne.getHands().size(); j++) {
                 if (this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j)) && this.playerOne.getHands().get(i).getLevel() != 3) {
-                    Card tempCard = this.playerOne.getHands().get(i);
-                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel() + 1, tempCard.getDamage() + 20, tempCard.getHp() + 20, tempCard.getCost() + 2);
-                    this.playerOne.removeCard(tempCard);
-                    this.playerOne.removeCard(tempCard);
+                    Card cardToLevelUp = this.playerOne.getHands().get(i);
+                    Card newCard = this.findCardinCollection(cardToLevelUp);
+                    this.playerOne.removeCard(cardToLevelUp);
+                    this.playerOne.removeCard(cardToLevelUp);
                     this.playerOne.addCard(newCard);
                 }
             }
@@ -173,14 +183,24 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     public void setLabelCostBlank(int index) {
         this.buyingLabelsCost[index].setText("");
     }
+    public Card findCardinCollection(Card card){
+        for(int i=0;i<buyingCollection.getCardsCollection().size();i++){
+            if(buyingCollection.getCardsCollection().get(i).getName().equals(card.getName()) && buyingCollection.getCardsCollection().get(i).getLevel() == card.getLevel()+1){
+                return buyingCollection.getCardsCollection().get(i);
+            }
+        }
+        return null;
+    }
 
     //Button Controllers
     public void onNext(ActionEvent e) throws Exception{
         //send players object to BattlePhaseController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerTwoBuyingPhase.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/BattlePhase.fxml"));
         root = loader.load();
 
-        PlayerTwoBuyingPhaseController controller = loader.getController();
+        //Change to playerTwoBuyingPhaseController later when done dev. and change the entire of playerTwoController to
+        // be duplicate of playerOne
+        BattlePhaseController controller = loader.getController();
         controller.receiveData(this.playerOne, this.playerTwo);
 
         //Switch to BattlePhaseScene
@@ -257,6 +277,25 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     public void onRefresh(ActionEvent e) {
         this.levelUPCard();
         this.renderPlayerHand();
+    }
+    public void onSelectImg(MouseEvent e) {
+        //click on img to select card to go to the arena.
+        ImageView imgClicked = (ImageView)e.getSource();
+        String imgId = ((ImageView) e.getSource()).getId();
+        Card card = getCardFromSelectImg(imgId);
+        if(this.playerOne.getSelectedCard().size() < 4 && card != null && !this.playerOne.getSelectedCard().contains(card)){
+            System.out.println("added card : " + card.getName());
+            this.playerOne.getSelectedCard().add(card);
+            imgClicked.setScaleX(1.25);
+            imgClicked.setScaleY(1.25);
+        }
+        else if(this.playerOne.getSelectedCard().contains(card)){
+            System.out.println("removed card : " + card.getName());
+            this.playerOne.getSelectedCard().remove(card);
+            imgClicked.setScaleX(1);
+            imgClicked.setScaleY(1);
+        }
+        System.out.println(playerOne.getSelectedCard().size());
     }
 
     //Rendering
