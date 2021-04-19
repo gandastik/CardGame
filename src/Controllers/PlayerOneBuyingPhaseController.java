@@ -285,12 +285,14 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         Card card = getCardFromSelectImg(imgId);
         if(this.playerOne.getSelectedCard().size() < 4 && card != null && !this.playerOne.getSelectedCard().contains(card)){
             System.out.println("added card : " + card.getName());
+            card.setSelectedBy(this.playerOne);
             this.playerOne.getSelectedCard().add(card);
             imgClicked.setScaleX(1.25);
             imgClicked.setScaleY(1.25);
         }
         else if(this.playerOne.getSelectedCard().contains(card)){
             System.out.println("removed card : " + card.getName());
+            card.setUnSelected();
             this.playerOne.getSelectedCard().remove(card);
             imgClicked.setScaleX(1);
             imgClicked.setScaleY(1);
@@ -310,13 +312,18 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         //rendering the cards on player's hand
         for (int i = 0; i < this.playerOne.getHands().size(); i++) {
             playerHandsImageViews[i].setImage(playerOne.getHands().get(i).getImage());
+            //Check if the card on the player's hand are selected to the arena.
+            if(this.playerOne.getSelectedCard().contains(playerOne.getHands().get(i))){
+                playerHandsImageViews[i].setScaleY(1.25);
+                playerHandsImageViews[i].setScaleX(1.25);
+            }
             index = i;
         }
         //rendering blank card on the empty slot.
         for(int j = index+1;j<Player.getMaxNumCardOnHand();j++){
             playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
         }
-        //if no card on players hand let's the first slot be blankcard.
+        //if no card on players hand let's the first slot be blank card.
         if(this.playerOne.getHands().size() == 0){
             playerHandsImageViews[0].setImage(new Image("./Assets/blankCard.png"));
         }
