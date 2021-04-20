@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -55,6 +56,7 @@ public class BattlePhaseController implements Initializable {
 
     private ArrayList<Card> cardsOnArena;
     private int indexOfCard;
+    private Card cardThisTurn;
 
     private Boolean isAttack;
 
@@ -88,6 +90,9 @@ public class BattlePhaseController implements Initializable {
         this.cardsOnArena.addAll(playerOne.getSelectedCard());
         this.cardsOnArena.addAll(playerTwo.getSelectedCard());
         this.sortCardsOnArenaBySpeed();
+        if(this.cardsOnArena.size() != 0) {
+            this.indexOfCard = 0;
+        }
     }
     public void initHpCards() {
         this.hpCards = new ArrayList<Label>();
@@ -118,7 +123,6 @@ public class BattlePhaseController implements Initializable {
         this.attackButtons.addAll(Arrays.asList(attackBtnP1_1, attackBtnP1_2, attackBtnP1_3, attackBtnP1_4, attackBtnP2_1, attackBtnP2_2, attackBtnP2_3, attackBtnP2_4));
     }
     public void initVariables(){
-        this.indexOfCard = 0;
         this.isAttack = false;
     }
 
@@ -136,9 +140,9 @@ public class BattlePhaseController implements Initializable {
 
         //render
         this.renderPlayerHp();
+        this.renderCardsHp();
         this.renderPlayerOneCardImgViews();
         this.renderPlayerTwoCardImgViews();
-        this.renderCardsHp();
 
         this.thisTurn();
     }
@@ -154,20 +158,25 @@ public class BattlePhaseController implements Initializable {
         }
     }
     public void thisTurn( ){
-        Card cardThisTurn = cardsOnArena.get(this.indexOfCard);
-        Player player = cardThisTurn.getSelectedBy();
-        String prefix;
-        if(player.getName().equals(this.playerOne.getName())){
-            prefix="P1";
+        if(this.cardsOnArena.size() > 0){
+            this.cardThisTurn = cardsOnArena.get(this.indexOfCard);
+            Player player = this.cardThisTurn.getSelectedBy();
+            String prefix;
+            if(player.getName().equals(this.playerOne.getName())){
+                prefix="P1";
+            }
+            else {
+                prefix = "P2";
+            }
+            int index = player.getSelectedCard().indexOf(this.cardThisTurn);
+            this.showButton(prefix, index);
         }
-        else {
-            prefix = "P2";
-        }
-        int index = player.getSelectedCard().indexOf(cardThisTurn);
-        this.showButton(prefix, index);
     }
     public void endTurn() {
         this.indexOfCard += 1;
+        if(this.indexOfCard > this.cardsOnArena.size() - 1){
+            this.indexOfCard = 0;
+        }
         this.thisTurn();
     }
     public void showButton(String prefix, int index){
@@ -196,18 +205,23 @@ public class BattlePhaseController implements Initializable {
             }
         }
     }
-//    public Card getCardByClickOnImg(String imgId) {
-//        if(imgId.startsWith("imgP1")){
-//            for(int i=0;i<this.cardsOnArena.size();i++){
-////                if(imgId.equals("imgP1_" + )){
-////                    return this.cardsOnArena.get(i);
-//                }
-//            }
-//        }
-//        else if(imgId.startsWith("imgP2")) {
-//
-//        }
-//    }
+    public Card getCardByClickOnImg(String imgId) {
+        if(imgId.startsWith("imgP1")){
+            for(int i=0;i<this.playerOne.getSelectedCard().size();i++){
+                if(imgId.equals("imgP1_" + (i+1))){
+                    return this.playerOne.getSelectedCard().get(i);
+                }
+            }
+        }
+        else if(imgId.startsWith("imgP2")) {
+            for(int i=0;i<this.playerTwo.getSelectedCard().size();i++){
+                if(imgId.equals("imgP2_" + (i+1))){
+                    return this.playerTwo.getSelectedCard().get(i);
+                }
+            }
+        }
+        return null;
+    }
 
     //Buttons Controllers
     public void onNext(ActionEvent e) throws Exception{
@@ -247,9 +261,15 @@ public class BattlePhaseController implements Initializable {
     public void onSelect(MouseEvent e) {
         ImageView imgV = (ImageView)e.getSource();
         System.out.println("CLICKED!!!!");
+        String imgId = ((ImageView)e.getSource()).getId();
+        Card selectedCard = getCardByClickOnImg(imgId);
         //check if this attack button is hit, if the card turn is on playerOne arena
         if(this.isAttack && cardsOnArena.get(indexOfCard).getSelectedBy().getName().equals(this.playerOne.getName())){
-
+            if(imgId.startsWith("imgP2") && selectedCard != null){
+                selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                this.renderCardsHp();
+                this.renderPlayerTwoCardImgViews();
+            }
         }
     }
     public void onAttack(ActionEvent e) {
@@ -278,13 +298,27 @@ public class BattlePhaseController implements Initializable {
 
     //Render
     public void renderPlayerOneCardImgViews() {
-        for(int i=0;i<this.playerOne.getSelectedCard().size();i++){
+        int i;
+        for(i=0;i<this.playerOne.getSelectedCard().size();i++){
             this.playerOneImgViews[i].setImage(this.playerOne.getSelectedCard().get(i).getImage());
+        }
+        for(int j=i+1;j<4;j++){
+            this.playerOneImgViews[j].setImage(new Image("./Assets/blankCard.png"));
+        }
+        if(this.playerOne.getSelectedCard().size() == 0){
+            this.playerOneImgViews[0].setImage(new Image("./Assets/blankCard.png"));
         }
     }
     public void renderPlayerTwoCardImgViews() {
-        for(int i=0;i<this.playerTwo.getSelectedCard().size();i++) {
+        int i;
+        for(i=0;i<this.playerTwo.getSelectedCard().size();i++) {
             this.playerTwoImgViews[i].setImage(this.playerTwo.getSelectedCard().get(i).getImage());
+        }
+        for(int j=i+1;j<4;j++){
+            this.playerTwoImgViews[j].setImage(new Image("Assets/blankCard.png"));
+        }
+        if(this.playerTwo.getSelectedCard().size() == 0){
+            this.playerTwoImgViews[0].setImage(new Image("./Assets/blankCard.png"));
         }
     }
     public void renderPlayerHp() {
