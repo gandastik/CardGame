@@ -65,6 +65,8 @@ public class BattlePhaseController implements Initializable {
     private Boolean isAttack;
     private Boolean isSkill;
 
+    public static int numberOfTurn = 1;
+
     //Initializations
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -270,23 +272,29 @@ public class BattlePhaseController implements Initializable {
     }
     public Boolean checkIfFinish(){
         if(this.playerOne.getSelectedCard().size() == 0){
-            int totalDmg = 0;
+            int totalLevel = 0;
             for(int i=0;i<this.playerTwo.getSelectedCard().size();i++){
-                totalDmg += this.playerTwo.getSelectedCard().get(i).getLevel();
+                totalLevel += this.playerTwo.getSelectedCard().get(i).getLevel();
             }
-            this.playerOne.takeDmg(totalDmg);
-            System.out.println("Player One took " + totalDmg + " Damages");
+            this.playerOne.takeDmg(totalLevel);
+            System.out.println("Player One took " + totalLevel + " Damages");
+            //Winner get more money, loser get less money
+            this.playerTwo.addMoney(2 * totalLevel);
+            this.playerOne.addMoney(3);
             this.renderPlayerHp();
             this.resetState();
             return true;
         }
         else if(this.playerTwo.getSelectedCard().size() == 0){
-            int totalDmg = 0;
+            int totalLevel = 0;
             for(int i=0;i<this.playerOne.getSelectedCard().size();i++){
-                totalDmg += this.playerOne.getSelectedCard().get(i).getLevel();
+                totalLevel += this.playerOne.getSelectedCard().get(i).getLevel();
             }
-            this.playerTwo.takeDmg(totalDmg);
-            System.out.println("Player Two took " + totalDmg + " Damages");
+            this.playerTwo.takeDmg(totalLevel);
+            System.out.println("Player Two took " + totalLevel + " Damages");
+            //Winner get more money, loser get less money
+            this.playerOne.addMoney(2 * totalLevel * BattlePhaseController.numberOfTurn);
+            this.playerTwo.addMoney(BattlePhaseController.numberOfTurn + 2);
             this.renderPlayerHp();
             this.resetState();
             return true;
@@ -312,6 +320,9 @@ public class BattlePhaseController implements Initializable {
 
         PlayerOneBuyingPhaseController controller = loader.getController();
         controller.receiveData(this.playerOne, this.playerTwo);
+        System.out.println("number of turn is " + BattlePhaseController.numberOfTurn);
+        BattlePhaseController.numberOfTurn+=1;
+
 
         //Switch to BuyingPhaseScene
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
