@@ -149,8 +149,8 @@ public class BattlePhaseController implements Initializable {
         this.initCardsOnArena();
 
         //Display the name on the screen
-        this.playerOneName.setText("Player One: " + playerOne.getName());
-        this.playerTwoName.setText("Player Two: " + playerTwo.getName());
+        this.playerOneName.setText("Player: " + playerOne.getName());
+        this.playerTwoName.setText("Player: " + playerTwo.getName());
 
         //render
         this.renderPlayerHp();
@@ -507,8 +507,8 @@ public class BattlePhaseController implements Initializable {
         }
     }
     public void renderPlayerHp() {
-        this.playerOneHp.setText("Player One HP : " + this.playerOne.getHp());
-        this.playerTwoHp.setText("Player Two HP : " + this.playerTwo.getHp());
+        this.playerOneHp.setText("HP: " + this.playerOne.getHp());
+        this.playerTwoHp.setText("HP: " + this.playerTwo.getHp());
     }
     public void renderCardsHp() {
         int index1 = 0, index2 = 0;
