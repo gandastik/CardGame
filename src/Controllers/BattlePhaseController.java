@@ -1,9 +1,6 @@
 package Controllers;
 
-import Classes.Card;
-import Classes.FireTribe;
-import Classes.Player;
-import Classes.WaterTribe;
+import Classes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -190,6 +187,7 @@ public class BattlePhaseController implements Initializable {
     public void endTurn() {
         this.resetVisibility();
         this.isAttack = false;
+        this.isSkill = false;
         if(!this.checkIfFinish()){
             this.indexOfCard += 1;
             if(this.indexOfCard > this.cardsOnArena.size() - 1){
@@ -358,7 +356,16 @@ public class BattlePhaseController implements Initializable {
         //check if this attack button is hit, if the card turn is on playerOne arena
         if(this.isAttack && this.cardThisTurn.getSelectedBy().getName().equals(this.playerOne.getName())){
             if(imgId.startsWith("imgP2") && selectedCard != null){
-                selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                if(cardThisTurn.getTribe().equals("fire")){
+                    FireTribe card = (FireTribe)cardThisTurn;
+                    if(card.isCritical()){
+                        System.out.println("CRITICALLLL !!! !! !");
+                        selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
+                    }
+                    else {
+                        selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                    }
+                }
                 if(selectedCard.getIsDead()){
                     System.out.println("DEAD");
                     this.playerTwo.getSelectedCard().remove(selectedCard);
@@ -371,7 +378,16 @@ public class BattlePhaseController implements Initializable {
         }
         else if(this.isAttack && this.cardThisTurn.getSelectedBy().getName().equals(this.playerTwo.getName())){
             if(imgId.startsWith("imgP1") && selectedCard != null){
-                selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                if(cardThisTurn.getTribe().equals("fire")){
+                    FireTribe card = (FireTribe)cardThisTurn;
+                    if(card.isCritical()){
+                        System.out.println("CRITICALLLL !!! !! !");
+                        selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
+                    }
+                    else {
+                        selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                    }
+                }
                 if(selectedCard.getIsDead()){
                     System.out.println("DEAD");
                     this.playerOne.getSelectedCard().remove(selectedCard);
@@ -383,7 +399,32 @@ public class BattlePhaseController implements Initializable {
             }
         }
         else if(this.isSkill && this.cardThisTurn.getSelectedBy().getName().equals(this.playerOne.getName())){
-
+            if(imgId.startsWith("imgP1") && selectedCard != null){
+                if(this.cardThisTurn.getTribe().equals("water")){
+                    WaterTribe card = (WaterTribe)cardThisTurn;
+                    selectedCard.healing(card.getHeal());
+                }
+                else if(this.cardThisTurn.getTribe().equals("rock")){
+                    RockTribe card = (RockTribe)cardThisTurn;
+                    selectedCard.shielding(card.getShield());
+                }
+                this.renderCardsHp();
+                this.endTurn();
+            }
+        }
+        else if(this.isSkill && this.cardThisTurn.getSelectedBy().getName().equals(this.playerTwo.getName())){
+            if(imgId.startsWith("imgP2") && selectedCard != null){
+                if(this.cardThisTurn.getTribe().equals("water")){
+                    WaterTribe card = (WaterTribe)cardThisTurn;
+                    selectedCard.healing(card.getHeal());
+                }
+                else if(this.cardThisTurn.getTribe().equals("rock")){
+                    RockTribe card = (RockTribe)cardThisTurn;
+                    selectedCard.shielding(card.getShield());
+                }
+                this.renderCardsHp();
+                this.endTurn();
+            }
         }
     }
     public void onAttack(ActionEvent e) {
@@ -411,7 +452,7 @@ public class BattlePhaseController implements Initializable {
         //Skill Actions
         Button thisButton = (Button)e.getSource();
         String btnId = thisButton.getId();
-        if(!this.isAttack){
+        if(!this.isAttack && !cardThisTurn.getTribe().equals("fire")){
             System.out.println("SKILL MODE");
             this.isSkill = true;
             if(btnId.startsWith("skillBtnP1") && ( this.cardThisTurn.getTribe().equals("water") || this.cardThisTurn.getTribe().equals("rock") )){

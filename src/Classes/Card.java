@@ -128,6 +128,17 @@ public class Card {
         this.hp = this.maxHp;
         this.isDead = false;
     }
+    public void healing(int amount) {
+        if(this.hp + amount > this.maxHp){
+            this.hp = this.maxHp;
+        }
+        else{
+            this.hp += amount;
+        }
+    }
+    public void shielding(int amount) {
+        this.hp += amount;
+    }
 
     @Override
     public boolean equals(Object o) {
