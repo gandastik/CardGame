@@ -156,6 +156,11 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
                 if(this.playerTwo.getHands().get(i).equals(this.playerTwo.getHands().get(j)) && this.playerTwo.getHands().get(i).getLevel() != 3){
                     Card tempCard = this.playerTwo.getHands().get(i);
                     Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20, tempCard.getCost()+2, tempCard.getSpeed());
+                    if(this.playerTwo.getHands().get(j).getLevel() == 2){
+                        if(this.playerTwo.getHands().contains(newCard)){
+                            newCard.addId();
+                        }
+                    }
                     this.playerTwo.removeCard(tempCard);
                     this.playerTwo.removeCard(tempCard);
                     this.playerTwo.addCard(newCard);
@@ -209,6 +214,14 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
                 //Transaction -> take money away from player and then render the player's money on screen
                 this.playerTwo.takeMoney(card.getCost());
                 this.renderPlayerMoney();
+
+                //In case of Buying level 3 card -> Check if there's the same level 3 card on the hand then add an extra
+                // Id datafield to make the two of them different!
+                if(card.getLevel() == 3){
+                    if(this.playerTwo.getHands().contains(card)){
+                        card.addId();
+                    }
+                }
 
                 //add a card to player's hands
                 this.playerTwo.addCard(card);

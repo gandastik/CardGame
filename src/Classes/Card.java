@@ -19,9 +19,12 @@ public class Card {
     protected Player selectedBy;
     protected int speed;
     protected Boolean isDead = false;
+    protected int id;
+    public static int COUNT = 1;
 
     //Constructors
     public Card(String name, String tribe, int level, int damage, int hp, int cost, int speed) {
+        this.id = 0;
         setName(name);
         setTribe(tribe);
         setLevel(level);
@@ -73,6 +76,9 @@ public class Card {
     public Boolean getIsDead() {
         return this.isDead;
     }
+    public int getId() {
+        return this.id;
+    }
 
     //Setters
     public void setDamage(int damage) {
@@ -112,6 +118,10 @@ public class Card {
     public void setMaxHp(int maxHp) {
         this.maxHp = maxHp;
     }
+    public void addId() {
+        this.id = COUNT;
+        COUNT+=1;
+    }
 
     //Methods
     //this methods will return the valid type of card
@@ -148,6 +158,6 @@ public class Card {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return damage == card.damage && hp == card.hp && level == card.level && Objects.equals(name, card.name) && Objects.equals(tribe, card.tribe);
+        return damage == card.damage && hp == card.hp && level == card.level && Objects.equals(name, card.name) && Objects.equals(tribe, card.tribe) && id == card.id;
     }
 }
