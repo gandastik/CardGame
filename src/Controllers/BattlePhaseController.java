@@ -41,9 +41,6 @@ public class BattlePhaseController implements Initializable {
     private ArrayList<Label> hpPlayerTwoCards;
 
     @FXML
-    private HBox hboxP2;
-
-    @FXML
     private Button attackBtnP1_1, attackBtnP1_2, attackBtnP1_3, attackBtnP1_4, skillBtnP1_1, skillBtnP1_2, skillBtnP1_3, skillBtnP1_4;
     @FXML
     private Button attackBtnP2_1, attackBtnP2_2, attackBtnP2_3, attackBtnP2_4, skillBtnP2_1, skillBtnP2_2, skillBtnP2_3, skillBtnP2_4;
@@ -328,11 +325,6 @@ public class BattlePhaseController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void onHit(ActionEvent e) {
-        this.playerOne.takeDmg();
-        this.playerOneHp.setText("Player One HP : " + this.playerOne.getHp());
-        System.out.println("Player one HP : " + this.playerOne.getHp());
-    }
     public void onMouseEntered(MouseEvent e) {
 //        ImageView imgV = (ImageView)e.getSource();
 //        imgV.setOnMouseEntered(c -> {
@@ -366,6 +358,9 @@ public class BattlePhaseController implements Initializable {
                         selectedCard.takeDmg(this.cardThisTurn.getDamage());
                     }
                 }
+                else {
+                    selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                }
                 if(selectedCard.getIsDead()){
                     System.out.println("DEAD");
                     this.playerTwo.getSelectedCard().remove(selectedCard);
@@ -387,6 +382,9 @@ public class BattlePhaseController implements Initializable {
                     else {
                         selectedCard.takeDmg(this.cardThisTurn.getDamage());
                     }
+                }
+                else {
+                    selectedCard.takeDmg(this.cardThisTurn.getDamage());
                 }
                 if(selectedCard.getIsDead()){
                     System.out.println("DEAD");
