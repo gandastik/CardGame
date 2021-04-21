@@ -124,6 +124,10 @@ public class Card {
             this.isDead = true;
         }
     }
+    public void reset() {
+        this.hp = this.maxHp;
+        this.isDead = false;
+    }
 
     @Override
     public boolean equals(Object o) {

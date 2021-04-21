@@ -50,6 +50,9 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+    public void setSelectedCard(ArrayList<Card> arrayCards) {
+        this.selectedCard = arrayCards;
+    }
 
     //Methods
     public void takeDmg(int dmg){
