@@ -10,11 +10,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlayerTwoBuyingPhaseController">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="bodybg" stylesheets="@../PlayerTwoBuyingPhase.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlayerTwoBuyingPhaseController">
     <children>
-        <Label layoutX="350.0" layoutY="28.0" text="BUYING PHASE 2">
+        <Label layoutX="320.0" layoutY="29.0" text="BUYING PHASE 2">
             <font>
-                <Font name="Consolas" size="72.0" />
+                <Font name="Eras Bold ITC" size="72.0" />
             </font>
         </Label>
         <Button layoutX="1147.0" layoutY="51.0" mnemonicParsing="false" onAction="#onNext" text="next">
@@ -46,7 +46,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost1" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost1" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -69,7 +69,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost2" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost2" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -92,7 +92,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost3" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost3" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -115,7 +115,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost4" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost4" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -138,7 +138,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost5" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost5" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -161,7 +161,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost6" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost6" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -184,7 +184,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost7" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost7" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -207,7 +207,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="labelCost8" prefHeight="32.0" prefWidth="105.0" text="cost : ">
+                        <Label fx:id="labelCost8" prefHeight="32.0" prefWidth="105.0" text="cost : " textFill="WHITE">
                             <font>
                                 <Font name="Consolas" size="16.0" />
                             </font>
@@ -323,12 +323,12 @@
                 <Font name="Consolas" size="20.0" />
             </font>
         </Button>
-        <Label fx:id="playerMoney" layoutX="67.0" layoutY="94.0" text="money : ">
+        <Label fx:id="playerMoney" layoutX="67.0" layoutY="94.0" text="Money : ">
             <font>
-                <Font name="Consolas" size="28.0" />
+                <Font name="Eras Bold ITC" size="28.0" />
             </font>
         </Label>
-        <Label fx:id="rerollCostLabel" layoutX="693.0" layoutY="387.0" text="reroll cost : ">
+        <Label fx:id="rerollCostLabel" layoutX="693.0" layoutY="387.0" text="reroll cost : " textFill="WHITE">
             <font>
                 <Font name="Consolas" size="16.0" />
             </font>
