@@ -284,6 +284,8 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         //rendering the cards on player's hand
         for (int i = 0; i < this.playerTwo.getHands().size(); i++) {
             playerHandsImageViews[i].setImage(playerTwo.getHands().get(i).getImage());
+            playerHandsImageViews[i].setScaleX(1);
+            playerHandsImageViews[i].setScaleY(1);
             if(this.playerTwo.getSelectedCard().contains(playerTwo.getHands().get(i))){
                 playerHandsImageViews[i].setScaleY(1.25);
                 playerHandsImageViews[i].setScaleX(1.25);

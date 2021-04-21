@@ -294,6 +294,8 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         //rendering the cards on player's hand
         for (int i = 0; i < this.playerOne.getHands().size(); i++) {
             playerHandsImageViews[i].setImage(playerOne.getHands().get(i).getImage());
+            playerHandsImageViews[i].setScaleX(1);
+            playerHandsImageViews[i].setScaleY(1);
             //Check if the card on the player's hand are selected to the arena.
             if(this.playerOne.getSelectedCard().contains(playerOne.getHands().get(i))){
                 playerHandsImageViews[i].setScaleY(1.25);
