@@ -165,6 +165,11 @@ public class PlayerOneBuyingPhaseController implements Initializable {
                 if (this.playerOne.getHands().get(i).equals(this.playerOne.getHands().get(j)) && this.playerOne.getHands().get(i).getLevel() != 3) {
                     Card cardToLevelUp = this.playerOne.getHands().get(i);
                     Card newCard = this.findCardinCollection(cardToLevelUp);
+                    if(this.playerOne.getHands().get(j).getLevel() == 2){
+                        if(this.playerOne.getHands().contains(newCard)){
+                            newCard.addId();
+                        }
+                    }
                     this.playerOne.removeCard(cardToLevelUp);
                     this.playerOne.removeCard(cardToLevelUp);
                     this.playerOne.addCard(newCard);
@@ -219,6 +224,14 @@ public class PlayerOneBuyingPhaseController implements Initializable {
                 this.playerOne.takeMoney(card.getCost());
                 this.renderPlayerMoney();
 
+                //In case of Buying level 3 card -> Check if there's the same level 3 card on the hand then add an extra
+                // Id datafield to make the two of them different!
+                if(card.getLevel() == 3){
+                    if(this.playerOne.getHands().contains(card)){
+                        card.addId();
+                    }
+                }
+
                 //add a card to player's hands
                 this.playerOne.addCard(card);
                 //leveling up the duplicate card on the player's hand.
@@ -265,7 +278,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         ImageView imgClicked = (ImageView)e.getSource();
         String imgId = ((ImageView) e.getSource()).getId();
         Card card = getCardFromSelectImg(imgId);
-        if(this.playerOne.getSelectedCard().size() < 4 && card != null && !this.playerOne.getSelectedCard().contains(card)){
+        if(this.playerOne.getSelectedCard().size() < 4 && card != null && !this.playerOne.getSelectedCard().contains(card) ){
             System.out.println("added card : " + card.getName());
             card.setSelectedBy(this.playerOne);
             this.playerOne.getSelectedCard().add(card);

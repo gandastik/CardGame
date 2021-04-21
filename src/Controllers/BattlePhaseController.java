@@ -2,6 +2,7 @@ package Controllers;
 
 import Classes.*;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,9 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,6 +62,9 @@ public class BattlePhaseController implements Initializable {
     private Boolean isSkill;
 
     public static int numberOfTurn = 1;
+
+    @FXML
+    private Label winnerName, summary;
 
     //Initializations
     @Override
@@ -181,11 +186,19 @@ public class BattlePhaseController implements Initializable {
             this.showButton(prefix, index);
         }
     }
-    public void endTurn() {
+    public void endTurn() throws Exception{
         this.resetVisibility();
         this.isAttack = false;
         this.isSkill = false;
-        if(!this.checkIfFinish()){
+
+        if(this.checkIfFinish()){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/ConfirmWinningScene.fxml"));
+            root = loader.load();
+            ConfirmWinningController controller = loader.getController();
+            controller.receiveData(this.playerOne, this.playerTwo);
+            ConfirmWinningController.display();
+        }
+        else if(!this.checkIfFinish()){
             this.indexOfCard += 1;
             if(this.indexOfCard > this.cardsOnArena.size() - 1){
                 this.indexOfCard = 0;
@@ -340,7 +353,7 @@ public class BattlePhaseController implements Initializable {
 //            imgV.setScaleY(1);
 //        });
     }
-    public void onSelect(MouseEvent e) {
+    public void onSelect(MouseEvent e) throws Exception{
         ImageView imgV = (ImageView)e.getSource();
         System.out.println("CLICKED!!!!");
         String imgId = ((ImageView)e.getSource()).getId();
