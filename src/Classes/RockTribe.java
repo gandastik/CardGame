@@ -4,8 +4,9 @@ public class RockTribe extends Card{
     private int shield;
 
     //Constructor
-    public RockTribe(String name, int level, int damage, int hp, int cost, int speed) {
+    public RockTribe(String name, int level, int damage, int hp, int cost, int speed, int shield) {
         super(name,"rock", level, damage, hp, cost, speed);
+        setShield(shield);
     }
 
     //Getters
