@@ -129,7 +129,10 @@ public class Card {
         this.isDead = false;
     }
     public void healing(int amount) {
-        if(this.hp + amount > this.maxHp){
+        if(this.hp > this.maxHp){
+            //Do nothing
+        }
+        else if(this.hp + amount > this.maxHp){
             this.hp = this.maxHp;
         }
         else{
