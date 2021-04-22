@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -136,6 +137,22 @@ public class PlayerOneBuyingPhaseController implements Initializable {
             }
         }
         return 0;
+    }
+    public Card getCardFromImgBuyingHand(String imgId) {
+        for(int i=0;i<8;i++){
+            if(imgId.equals("img"+ (i+1))){
+                return buyingHand.get(i);
+            }
+        }
+        return null;
+    }
+    public Card getCardFromImgPlayerHand(String imgId) {
+        for(int i=0;i<Player.getMaxNumCardOnHand();i++) {
+            if(imgId.equals("imgP" + (i+1))){
+                return this.playerOne.getHands().get(i);
+            }
+        }
+        return null;
     }
     public Card getCardFromSellingBtn(String btnId, Player player) {
         if(player.getName().equals(this.playerOne.getName())) {
@@ -269,10 +286,6 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         }
         this.renderPlayerHand();
     }
-    public void onRefresh(ActionEvent e) {
-        this.levelUPCard();
-        this.renderPlayerHand();
-    }
     public void onSelectImg(MouseEvent e) {
         //click on img to select card to go to the arena.
         ImageView imgClicked = (ImageView)e.getSource();
@@ -300,6 +313,21 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         //rendering the cards on the buying hand
         for(int i=0;i<8;i++){
             this.buyingImageViews[i].setImage(buyingHand.get(i).getImage());
+            //Add tooltips in ImageView of each non blank card to show the details of the card.
+            Card card = getCardFromImgBuyingHand(this.buyingImageViews[i].getId());
+            if(!card.getName().equals("blank")){
+                String name = card.getName();
+                name = name.replaceAll("_", " ");
+                int level = card.getLevel();
+                int hp = card.getHp();
+                int maxHp = card.getMaxHp();
+                String tribe = card.getTribe();
+                Tooltip.install(this.buyingImageViews[i], new Tooltip("card name: " + name + "\nlevel: " + level +
+                        "\nhp: " + hp + "/" + maxHp + "\ntribe: " + tribe));
+            }
+            else {
+                Tooltip.uninstall(this.buyingImageViews[i], new Tooltip());
+            }
         }
     }
     public void renderPlayerHand() {
@@ -309,6 +337,21 @@ public class PlayerOneBuyingPhaseController implements Initializable {
             playerHandsImageViews[i].setImage(playerOne.getHands().get(i).getImage());
             playerHandsImageViews[i].setScaleX(1);
             playerHandsImageViews[i].setScaleY(1);
+            //Add tooltips in ImageView of each non blank card to show the details of the card.
+            Card card = getCardFromImgPlayerHand(this.playerHandsImageViews[i].getId());
+            if(!card.getName().equals("blank")){
+                String name = card.getName();
+                name = name.replaceAll("_", " ");
+                int level = card.getLevel();
+                int hp = card.getHp();
+                int maxHp = card.getMaxHp();
+                String tribe = card.getTribe();
+                Tooltip.install(this.playerHandsImageViews[i], new Tooltip("card name: " + name + "\nlevel: " + level +
+                        "\nhp: " + hp + "/" + maxHp + "\ntribe: " + tribe));
+            }
+            else {
+                Tooltip.uninstall(this.playerHandsImageViews[i], new Tooltip());
+            }
             //Check if the card on the player's hand are selected to the arena.
             if(this.playerOne.getSelectedCard().contains(playerOne.getHands().get(i))){
                 playerHandsImageViews[i].setScaleY(1.25);

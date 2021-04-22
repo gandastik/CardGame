@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
@@ -41,8 +42,14 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP1_1" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP1_1" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP1_1" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP1_1" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <ImageView fx:id="imgP1_1" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
@@ -57,8 +64,14 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP1_2" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP1_2" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP1_2" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP1_2" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <ImageView fx:id="imgP1_2" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
@@ -73,8 +86,14 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP1_3" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP1_3" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP1_3" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP1_3" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <ImageView fx:id="imgP1_3" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
@@ -89,8 +108,14 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP1_4" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP1_4" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP1_4" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP1_4" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <ImageView fx:id="imgP1_4" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
@@ -115,8 +140,14 @@
                   <ImageView fx:id="imgP2_1" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP2_1" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP2_1" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP2_1" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP2_1" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>
@@ -131,8 +162,14 @@
                   <ImageView fx:id="imgP2_2" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP2_2" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP2_2" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP2_2" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP2_2" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>
@@ -147,8 +184,14 @@
                   <ImageView fx:id="imgP2_3" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP2_3" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP2_3" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP2_3" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP2_3" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>
@@ -163,8 +206,14 @@
                   <ImageView fx:id="imgP2_4" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="attackBtnP2_4" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack" />
-                        <Button fx:id="skillBtnP2_4" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill" />
+                        <Button fx:id="attackBtnP2_4" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="skillBtnP2_4" mnemonicParsing="false" onAction="#onSkill" prefHeight="25.0" prefWidth="74.0" text="Skill">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>

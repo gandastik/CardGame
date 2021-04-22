@@ -4,17 +4,12 @@ import Classes.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class ConfirmWinningController{
@@ -30,10 +25,8 @@ public class ConfirmWinningController{
     private Player playerWinner;
     private Player playerOne, playerTwo;
 
-    public void display(Player player) throws Exception {
-    }
 
-    public void receiveData(Player winner, Player one, Player two) throws Exception{
+    public void receiveData(Player winner, Player one, Player two){
         this.playerWinner = winner;
         this.playerOne = one;
         this.playerTwo = two;
