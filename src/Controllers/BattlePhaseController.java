@@ -63,8 +63,8 @@ public class BattlePhaseController implements Initializable {
 
     public static int numberOfTurn = 1;
 
-    @FXML
-    private Label winnerName, summary;
+    private Player playerWinner;
+    private ArrayList<Integer> moneyWon;
 
     //Initializations
     @Override
@@ -186,17 +186,30 @@ public class BattlePhaseController implements Initializable {
             this.showButton(prefix, index);
         }
     }
-    public void endTurn() throws Exception{
+    public void endTurn(Event e) throws Exception{
         this.resetVisibility();
         this.isAttack = false;
         this.isSkill = false;
 
         if(this.checkIfFinish()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/ConfirmWinningScene.fxml"));
-            root = loader.load();
-            ConfirmWinningController controller = loader.getController();
-            controller.receiveData(this.playerOne, this.playerTwo);
-            ConfirmWinningController.display();
+            //If the battle is finished display the winning scene
+            FXMLLoader confirmLoader = new FXMLLoader(getClass().getResource("../Scenes/ConfirmWinningScene.fxml"));
+            root = confirmLoader.load();
+            ConfirmWinningController controller = confirmLoader.getController();
+            controller.receiveData(this.playerWinner, this.playerOne, this.playerTwo);
+            Scene exitScene = new Scene(root);
+
+            Stage window1 = new Stage();
+            window1.initModality(Modality.APPLICATION_MODAL);
+            window1.setTitle(this.playerWinner.getName() + " is the winner");
+
+            window1.setScene(exitScene);
+            window1.showAndWait();
+            //If the click OK close the winner popup and change the current stage to PlayerOneBuyingPhase.
+            if(ConfirmWinningController.onNext){
+                stage = (Stage) ((ImageView)e.getSource()).getScene().getWindow();
+                stage.close();
+            }
         }
         else if(!this.checkIfFinish()){
             this.indexOfCard += 1;
@@ -289,6 +302,7 @@ public class BattlePhaseController implements Initializable {
             //Winner get more money, loser get less money
             this.playerTwo.addMoney(2 * totalLevel);
             this.playerOne.addMoney(3);
+            this.playerWinner = this.playerTwo;
             this.renderPlayerHp();
             this.resetState();
             return true;
@@ -303,6 +317,7 @@ public class BattlePhaseController implements Initializable {
             //Winner get more money, loser get less money
             this.playerOne.addMoney(2 * totalLevel * BattlePhaseController.numberOfTurn);
             this.playerTwo.addMoney(BattlePhaseController.numberOfTurn + 2);
+            this.playerWinner = this.playerOne;
             this.renderPlayerHp();
             this.resetState();
             return true;
@@ -381,7 +396,7 @@ public class BattlePhaseController implements Initializable {
                 }
                 this.renderCardsHp();
                 this.renderPlayerTwoCardImgViews();
-                this.endTurn();
+                this.endTurn(e);
             }
         }
         else if(this.isAttack && this.cardThisTurn.getSelectedBy().getName().equals(this.playerTwo.getName())){
@@ -406,7 +421,7 @@ public class BattlePhaseController implements Initializable {
                 }
                 this.renderCardsHp();
                 this.renderPlayerOneCardImgViews();
-                this.endTurn();
+                this.endTurn(e);
             }
         }
         else if(this.isSkill && this.cardThisTurn.getSelectedBy().getName().equals(this.playerOne.getName())){
@@ -420,7 +435,7 @@ public class BattlePhaseController implements Initializable {
                     selectedCard.shielding(card.getShield());
                 }
                 this.renderCardsHp();
-                this.endTurn();
+                this.endTurn(e);
             }
         }
         else if(this.isSkill && this.cardThisTurn.getSelectedBy().getName().equals(this.playerTwo.getName())){
@@ -434,7 +449,7 @@ public class BattlePhaseController implements Initializable {
                     selectedCard.shielding(card.getShield());
                 }
                 this.renderCardsHp();
-                this.endTurn();
+                this.endTurn(e);
             }
         }
     }
