@@ -32,12 +32,13 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     Player playerTwo;
 
     @FXML
-    private Label playerOneName, playerTwoName, playerMoney;
+    private Label playerName ,playerMoney, playerHp;
 
     @FXML
     //Buying tab
     private ImageView img1, img2, img3, img4, img5, img6, img7, img8;
     private CardsCollection buyingCollection;
+    private CardsCollection allCardCollection;
     private ArrayList<Card> buyingHand;
     private ImageView[] buyingImageViews;
     @FXML
@@ -91,10 +92,13 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     public void initBuyingCollection(){
         this.buyingCollection = new CardsCollection();
         this.buyingHand = buyingCollection.getCardsCollection();
+        this.allCardCollection = new CardsCollection("ALL");
     }
     public void initPlayerMoney(){
         int money = this.playerOne.getMoney();
-        this.playerMoney.setText("money : " + money);
+        this.playerMoney.setText("Money : " + money);
+        this.playerName.setText("Player name : " + this.playerOne.getName());
+        this.playerHp.setText("HP : " + this.playerOne.getHp());
     }
     public void initBuyingLabelsCost() {
         this.buyingLabelsCost = new Label[8];
@@ -198,9 +202,9 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         this.buyingLabelsCost[index].setText("");
     }
     public Card findCardinCollection(Card card){
-        for(int i=0;i<buyingCollection.getCardsCollection().size();i++){
-            if(buyingCollection.getCardsCollection().get(i).getName().equals(card.getName()) && buyingCollection.getCardsCollection().get(i).getLevel() == card.getLevel()+1){
-                return buyingCollection.getCardsCollection().get(i);
+        for(int i=0;i<allCardCollection.getCardsCollection().size();i++){
+            if(allCardCollection.getCardsCollection().get(i).getName().equals(card.getName()) && allCardCollection.getCardsCollection().get(i).getLevel() == card.getLevel()+1){
+                return allCardCollection.getCardsCollection().get(i);
             }
         }
         return null;
@@ -373,7 +377,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         }
     }
     public void renderPlayerMoney() {
-        this.playerMoney.setText("money : " + this.playerOne.getMoney());
+        this.playerMoney.setText("Money : " + this.playerOne.getMoney());
     }
     public void renderCostBuying() {
         for(int i=0;i<8;i++){

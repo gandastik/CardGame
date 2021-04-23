@@ -5,22 +5,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConfirmWinningController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConfirmWinningController">
    <children>
-      <Label fx:id="winnerName" layoutX="209.0" layoutY="24.0" text="LABEL">
+      <Label fx:id="winnerName" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" prefHeight="109.0" prefWidth="512.0" text="Player has won Round no. x">
          <font>
-            <Font name="Consolas" size="30.0" />
+            <Font name="Tw Cen MT Condensed" size="30.0" />
          </font>
       </Label>
-      <Button layoutX="215.0" layoutY="239.0" mnemonicParsing="false" onAction="#onNext" text="NEXT">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="240.0" mnemonicParsing="false" onAction="#onNext" text="NEXT">
          <font>
-            <Font name="Consolas" size="20.0" />
+            <Font name="Tw Cen MT Condensed" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="summary" layoutX="228.0" layoutY="132.0" text="Label">
+      <Label fx:id="summary" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="103.0" prefHeight="119.0" prefWidth="305.0" text="Label">
          <font>
-            <Font name="Consolas" size="16.0" />
+            <Font name="Tw Cen MT Condensed" size="20.0" />
          </font>
       </Label>
    </children>

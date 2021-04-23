@@ -12,7 +12,7 @@ public class Player {
 
     //Constructor
     public Player() {
-        this.hp = 100;
+        this.hp = 20;
         this.name = "name";
         this.money = 20;
         this.hands = new ArrayList<Card>();
@@ -20,8 +20,8 @@ public class Player {
     }
     public Player(String name){
         this.name = name;
-        this.hp = 100;
-        this.money = 99999;
+        this.hp = 20;
+        this.money = 25;
         this.hands = new ArrayList<Card>();
         this.selectedCard = new ArrayList<Card>();
     }

@@ -24,15 +24,24 @@ public class ConfirmWinningController{
     private Label winnerName, summary;
     private Player playerWinner;
     private Player playerOne, playerTwo;
+    private int totalDmgTaken;
 
 
-    public void receiveData(Player winner, Player one, Player two){
+    public void receiveData(Player winner, Player one, Player two, int totalDmgTaken){
         this.playerWinner = winner;
         this.playerOne = one;
         this.playerTwo = two;
+        this.totalDmgTaken = totalDmgTaken;
 
-        this.winnerName.setText(this.playerWinner.getName());
-        this.summary.setText(this.playerWinner.getName() + " Have made " + this.playerWinner.getMoney());
+        this.winnerName.setText(this.playerWinner.getName() + " Has won Round No. " + BattlePhaseController.numberOfTurn);
+        if(this.playerWinner.getName().equals(this.playerOne.getName())){
+            this.summary.setText(this.playerWinner.getName() + " Has made " + (2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken) + " golds\n" +
+                    this.playerTwo.getName() + " Has lost " + this.totalDmgTaken + " life points");
+        }
+        else {
+            this.summary.setText(this.playerWinner.getName() + " Has made " + (2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken) + " golds\n" +
+                    this.playerOne.getName() + " Has lost " + this.totalDmgTaken + " life points");
+        }
     }
 
     public void onNext(ActionEvent e) throws Exception{

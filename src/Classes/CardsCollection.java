@@ -1,5 +1,7 @@
 package Classes;
 
+import Controllers.BattlePhaseController;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,6 +14,12 @@ public class CardsCollection {
     public CardsCollection() {
         this.cardsCollection = new ArrayList<Card>();
         this.addCardsToCollection();
+        if(BattlePhaseController.numberOfTurn >= 4) {
+            this.addLevelTwosToCollection();
+        }
+        if (BattlePhaseController.numberOfTurn >= 6){
+            this.addLevelThreesToCollection();
+        }
         this.shuffle();
 
         //create a blank card for every collection of card
@@ -19,6 +27,9 @@ public class CardsCollection {
     }
     public CardsCollection(String type){
         this.cardsCollection = new ArrayList<Card>();
+        this.addCardsToCollection();
+        this.addLevelTwosToCollection();
+        this.addLevelThreesToCollection();
 
         //create a blank card
         this.blankCard = new Card();
@@ -51,7 +62,9 @@ public class CardsCollection {
         cardsCollection.add(new WaterTribe("Lady_Of_The_Lake",1,20,160,4,3,30));
         cardsCollection.add(new WaterTribe("Prince_Of_Ice",1,30,100,4,2,40));
         cardsCollection.add(new WaterTribe("The_Mermail",1,20,130,4,4,20));
-
+    }
+    public void addLevelTwosToCollection() {
+        //Adding level two cards to the collection when the turn no. 4
         //--------------------------------------LEVEL 2----------------------------------------------------
         //Fire
         cardsCollection.add(new FireTribe("Volcanic_Rat", 2, 30, 200, 10,4));
@@ -79,7 +92,9 @@ public class CardsCollection {
         cardsCollection.add(new WaterTribe("The_Mermail",2,30,160,11,5,30));
         cardsCollection.add(new WaterTribe("Ice_Master",2,40,190,15,3,60));
         cardsCollection.add(new WaterTribe("Megician_Of_Prophecy",2,40,180,15,3,70));
-
+    }
+    public void addLevelThreesToCollection() {
+        //Adding level three cards to the collection when the turn no. 6
         //--------------------------------------LEVEL 3----------------------------------------------------
         //Fire
         cardsCollection.add(new FireTribe("Volcanic_Rat", 3, 40, 220, 18,5));
@@ -107,7 +122,6 @@ public class CardsCollection {
         cardsCollection.add(new WaterTribe("The_Mermail",3,30,220,21,6,40));
         cardsCollection.add(new WaterTribe("Ice_Master",3,60,260,28,4,80));
         cardsCollection.add(new WaterTribe("Megician_Of_Prophecy",3,50,260,28,4,80));
-
     }
 
     //Methods
@@ -115,6 +129,12 @@ public class CardsCollection {
         //remove a blank card out of a collection and then refill the collection.
         cardsCollection = new ArrayList<Card>();
         this.addCardsToCollection();
+        if(BattlePhaseController.numberOfTurn >= 4) {
+            this.addLevelTwosToCollection();
+        }
+        if (BattlePhaseController.numberOfTurn >= 6){
+            this.addLevelThreesToCollection();
+        }
         Collections.shuffle(this.cardsCollection);
     }
     //remove the card that are selected and replace them with a blank card

@@ -13,20 +13,23 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="bodybg" stylesheets="@../PlayerOneBuyingPhase.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlayerOneBuyingPhaseController">
    <children>
-      <Label layoutX="327.0" layoutY="10.0" text="BUYING PHASE 1">
+      <Label layoutX="402.0" layoutY="25.0" text="BUYING PHASE 1">
          <font>
-            <Font name="Eras Bold ITC" size="72.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="72.0" />
          </font>
       </Label>
-      <Button layoutX="1146.0" layoutY="42.0" mnemonicParsing="false" onAction="#onNext" text="next">
+      <Button layoutX="1153.0" layoutY="45.0" mnemonicParsing="false" onAction="#onNext" text="next">
          <font>
-            <Font name="Consolas" size="22.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-      <Button layoutX="524.0" layoutY="391.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="30.0" prefWidth="89.0" text="reroll" textAlignment="CENTER">
+      <Button layoutX="524.0" layoutY="391.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="30.0" prefWidth="84.0" text="reroll" textAlignment="CENTER">
          <font>
-            <Font name="Consolas" size="16.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
          </font>
       </Button>
       <VBox layoutX="59.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="140.0">
@@ -40,7 +43,7 @@
                <children>
                   <Button fx:id="btn1" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -48,9 +51,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost1" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost1" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -66,7 +69,7 @@
                <children>
                   <Button fx:id="btn2" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -74,9 +77,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost2" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost2" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -92,7 +95,7 @@
                <children>
                   <Button fx:id="btn3" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -100,9 +103,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost3" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost3" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -118,7 +121,7 @@
                <children>
                   <Button fx:id="btn4" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -126,9 +129,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost4" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost4" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -144,7 +147,7 @@
                <children>
                   <Button fx:id="btn5" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -152,9 +155,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost5" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost5" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -170,7 +173,7 @@
                <children>
                   <Button fx:id="btn6" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -178,9 +181,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost6" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost6" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -196,7 +199,7 @@
                <children>
                   <Button fx:id="btn7" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -204,9 +207,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost7" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost7" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -222,7 +225,7 @@
                <children>
                   <Button fx:id="btn8" mnemonicParsing="false" onAction="#onBuy" prefHeight="28.0" prefWidth="156.0" text="Buy">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -230,9 +233,9 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="labelCost8" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelCost8" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="156.0" text="cost : " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="16.0" />
+                  <Font name="Tw Cen MT Condensed" size="16.0" />
                </font>
             </Label>
          </children>
@@ -249,7 +252,7 @@
                      <children>
                         <Button fx:id="sell1" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -269,7 +272,7 @@
                      <children>
                         <Button fx:id="sell2" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="160.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -289,7 +292,7 @@
                      <children>
                         <Button fx:id="sell3" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="154.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -309,7 +312,7 @@
                      <children>
                         <Button fx:id="sell4" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="157.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -329,7 +332,7 @@
                      <children>
                         <Button fx:id="sell5" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -349,7 +352,7 @@
                      <children>
                         <Button fx:id="sell6" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="166.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -369,7 +372,7 @@
                      <children>
                         <Button fx:id="sell7" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
                            <font>
-                              <Font name="Consolas" size="14.0" />
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -381,14 +384,24 @@
             </VBox>
          </children>
       </HBox>
-      <Label fx:id="playerMoney" layoutX="67.0" layoutY="72.0" text="Money : ">
+      <Label fx:id="playerMoney" layoutX="70.0" layoutY="85.0" text="Money : ">
          <font>
-            <Font name="Eras Bold ITC" size="28.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
          </font>
       </Label>
       <Label fx:id="rerollCostLabel" layoutX="638.0" layoutY="398.0" text="reroll cost : " textFill="WHITE">
          <font>
-            <Font name="Consolas" size="16.0" />
+            <Font name="Tw Cen MT Condensed" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerName" layoutX="67.0" layoutY="29.0" text="Player Name : ">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerHp" layoutX="69.0" layoutY="58.0" text="HP :">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
          </font>
       </Label>
    </children>

@@ -32,12 +32,13 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
     Player playerTwo;
 
     @FXML
-    private Label playerTwoName, playerMoney;
+    private Label playerName, playerHp, playerMoney;
 
     @FXML
     //Buying tab
     private ImageView img1, img2, img3, img4, img5, img6, img7, img8;
     private CardsCollection buyingCollection;
+    private CardsCollection allCardCollection;
     private ArrayList<Card> buyingHand;
     private ImageView[] buyingImageViews;
     @FXML
@@ -91,10 +92,13 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
     public void initBuyingCollection(){
         this.buyingCollection = new CardsCollection();
         this.buyingHand = buyingCollection.getCardsCollection();
+        this.allCardCollection = new CardsCollection("ALL");
     }
     public void initPlayerMoney(){
         int money = this.playerTwo.getMoney();
         this.playerMoney.setText("money : " + money);
+        this.playerName.setText("Player name : " + this.playerTwo.getName());
+        this.playerHp.setText("HP : " + this.playerTwo.getHp());
     }
     public void initBuyingLabelsCost() {
         this.buyingLabelsCost = new Label[8];
@@ -172,15 +176,15 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         for(int i=0;i<this.playerTwo.getHands().size();i++){
             for(int j=i+1;j<this.playerTwo.getHands().size();j++){
                 if(this.playerTwo.getHands().get(i).equals(this.playerTwo.getHands().get(j)) && this.playerTwo.getHands().get(i).getLevel() != 3){
-                    Card tempCard = this.playerTwo.getHands().get(i);
-                    Card newCard = new Card(tempCard.getName(), tempCard.getTribe(), tempCard.getLevel()+1, tempCard.getDamage()+20, tempCard.getHp()+20, tempCard.getCost()+2, tempCard.getSpeed());
+                    Card cardToLevelUp = this.playerTwo.getHands().get(i);
+                    Card newCard = this.findCardinCollection(cardToLevelUp);
                     if(this.playerTwo.getHands().get(j).getLevel() == 2){
                         if(this.playerTwo.getHands().contains(newCard)){
                             newCard.addId();
                         }
                     }
-                    this.playerTwo.removeCard(tempCard);
-                    this.playerTwo.removeCard(tempCard);
+                    this.playerTwo.removeCard(cardToLevelUp);
+                    this.playerTwo.removeCard(cardToLevelUp);
                     this.playerTwo.addCard(newCard);
                     System.out.println("FOUND THE SAME ONE!");
                 }
@@ -195,6 +199,14 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         for(int i=0;i<this.playerTwo.getHands().size();i++){
             if(imgId.equals("imgP" + (i+1))){
                 return this.playerTwo.getHands().get(i);
+            }
+        }
+        return null;
+    }
+    public Card findCardinCollection(Card card){
+        for(int i=0;i<allCardCollection.getCardsCollection().size();i++){
+            if(allCardCollection.getCardsCollection().get(i).getName().equals(card.getName()) && allCardCollection.getCardsCollection().get(i).getLevel() == card.getLevel()+1){
+                return allCardCollection.getCardsCollection().get(i);
             }
         }
         return null;

@@ -63,6 +63,8 @@ public class BattlePhaseController implements Initializable {
     private Boolean isAttack;
     private Boolean isSkill;
 
+    private int totalDmgTaken;
+
     public static int numberOfTurn = 1;
 
     private Player playerWinner;
@@ -240,12 +242,13 @@ public class BattlePhaseController implements Initializable {
             FXMLLoader confirmLoader = new FXMLLoader(getClass().getResource("../Scenes/ConfirmWinningScene.fxml"));
             root = confirmLoader.load();
             ConfirmWinningController controller = confirmLoader.getController();
-            controller.receiveData(this.playerWinner, this.playerOne, this.playerTwo);
+            controller.receiveData(this.playerWinner, this.playerOne, this.playerTwo, this.totalDmgTaken);
             Scene exitScene = new Scene(root);
 
             Stage window1 = new Stage();
             window1.initModality(Modality.APPLICATION_MODAL);
             window1.setTitle(this.playerWinner.getName() + " is the winner");
+            window1.setResizable(false);
 
             window1.setScene(exitScene);
             window1.showAndWait();
@@ -337,30 +340,37 @@ public class BattlePhaseController implements Initializable {
     }
     public Boolean checkIfFinish(){
         if(this.playerOne.getSelectedCard().size() == 0){
-            int totalLevel = 0;
+            this.totalDmgTaken = 0;
             for(int i=0;i<this.playerTwo.getSelectedCard().size();i++){
-                totalLevel += this.playerTwo.getSelectedCard().get(i).getLevel();
+            this.totalDmgTaken += this.playerTwo.getSelectedCard().get(i).getLevel();
             }
-            this.playerOne.takeDmg(totalLevel);
-            System.out.println("Player One took " + totalLevel + " Damages");
+            this.playerOne.takeDmg(this.totalDmgTaken);
+            if(this.playerOne.getHp() <= 0){
+                //show winner scene (Player two) + back to menu button
+            }
+            System.out.println("Player One took " + this.totalDmgTaken + " Damages");
             //Winner get more money, loser get less money
-            this.playerTwo.addMoney(2 * totalLevel);
-            this.playerOne.addMoney(3);
+            this.playerTwo.addMoney(2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken);
+            this.playerOne.addMoney(2 * BattlePhaseController.numberOfTurn);
             this.playerWinner = this.playerTwo;
             this.renderPlayerHp();
             this.resetState();
             return true;
         }
         else if(this.playerTwo.getSelectedCard().size() == 0){
-            int totalLevel = 0;
+            this.totalDmgTaken = 0;
             for(int i=0;i<this.playerOne.getSelectedCard().size();i++){
-                totalLevel += this.playerOne.getSelectedCard().get(i).getLevel();
+                this.totalDmgTaken += this.playerOne.getSelectedCard().get(i).getLevel();
             }
-            this.playerTwo.takeDmg(totalLevel);
-            System.out.println("Player Two took " + totalLevel + " Damages");
+            this.playerTwo.takeDmg(this.totalDmgTaken);
+            if(this.playerTwo.getHp() <= 0){
+                //show winner scene (Player one) + back to menu button
+                stage.close();
+            }
+            System.out.println("Player Two took " + this.totalDmgTaken + " Damages");
             //Winner get more money, loser get less money
-            this.playerOne.addMoney(2 * totalLevel * BattlePhaseController.numberOfTurn);
-            this.playerTwo.addMoney(BattlePhaseController.numberOfTurn + 2);
+            this.playerOne.addMoney(2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken);
+            this.playerTwo.addMoney(2 * BattlePhaseController.numberOfTurn);
             this.playerWinner = this.playerOne;
             this.renderPlayerHp();
             this.resetState();
