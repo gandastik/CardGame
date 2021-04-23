@@ -1,6 +1,8 @@
 package Controllers;
 
 import Classes.*;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,8 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,6 +68,9 @@ public class BattlePhaseController implements Initializable {
     private Player playerWinner;
     private ArrayList<Integer> moneyWon;
 
+    private ArrayList<FadeTransition> playerOneFadeTransition;
+    private ArrayList<FadeTransition> playerTwoFadeTransition;
+
     //Initializations
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,6 +78,7 @@ public class BattlePhaseController implements Initializable {
         this.initPlayerOneCardImgViews();
         this.initPlayerTwoCardImgViews();
         this.initHpCards();
+        this.initPlayersFadeTransition();
 
         this.initSkillButtons();
         this.initAttackButtons();
@@ -135,6 +141,29 @@ public class BattlePhaseController implements Initializable {
         this.playerTwoTempList = new ArrayList<Card>();
         this.isAttack = false;
         this.isSkill = false;
+    }
+    public void initPlayersFadeTransition() {
+        this.playerOneFadeTransition = new ArrayList<FadeTransition>();
+        this.playerTwoFadeTransition = new ArrayList<FadeTransition>();
+         for(int i=0;i<this.playerOneImgViews.length;i++){
+             this.playerOneFadeTransition.add(new FadeTransition(Duration.seconds(0.1), this.playerOneImgViews[i]));
+             this.playerOneFadeTransition.get(i).setAutoReverse(true);
+             int finalI = i;
+             this.playerOneFadeTransition.get(i).setOnFinished(e -> playerOneFadeTransition.get(finalI).stop());
+             this.playerOneFadeTransition.get(i).setFromValue(1.0);
+             this.playerOneFadeTransition.get(i).setToValue(0.0);
+             this.playerOneFadeTransition.get(i).setCycleCount(4);
+         }
+         for(int i=0;i<this.playerTwoImgViews.length;i++){
+             this.playerTwoFadeTransition.add(new FadeTransition(Duration.seconds(0.1), this.playerTwoImgViews[i]));
+             this.playerTwoFadeTransition.get(i).setAutoReverse(true);
+             int finalI = i;
+             this.playerTwoFadeTransition.get(i).setOnFinished(e -> playerTwoFadeTransition.get(finalI).stop());
+             this.playerTwoFadeTransition.get(i).setFromValue(1.0);
+             this.playerTwoFadeTransition.get(i).setToValue(0.0);
+             this.playerTwoFadeTransition.get(i).setCycleCount(4);
+         }
+
     }
 
     //Receiving data
@@ -374,6 +403,7 @@ public class BattlePhaseController implements Initializable {
         String imgId = ((ImageView)e.getSource()).getId();
         Card selectedCard = getCardByClickOnImg(imgId);
         //check if this attack button is hit, if the card turn is on playerOne arena
+        /* PLAYER ONE CARD'S TURN (ATTACK MODE) */
         if(this.isAttack && this.cardThisTurn.getSelectedBy().getName().equals(this.playerOne.getName())){
             if(imgId.startsWith("imgP2") && selectedCard != null){
                 if(cardThisTurn.getTribe().equals("fire")){
@@ -394,11 +424,16 @@ public class BattlePhaseController implements Initializable {
                     this.playerTwo.getSelectedCard().remove(selectedCard);
                     this.cardsOnArena.remove(selectedCard);
                 }
+                else{
+                    int indexOfSelectedCard = this.playerTwo.getSelectedCard().indexOf(selectedCard);
+                    this.playerTwoFadeTransition.get(indexOfSelectedCard).play();
+                }
                 this.renderCardsHp();
                 this.renderPlayerTwoCardImgViews();
                 this.endTurn(e);
             }
         }
+        /* PLAYER TWO CARD'S TURN (ATTACK MODE) */
         else if(this.isAttack && this.cardThisTurn.getSelectedBy().getName().equals(this.playerTwo.getName())){
             if(imgId.startsWith("imgP1") && selectedCard != null){
                 if(cardThisTurn.getTribe().equals("fire")){
@@ -419,6 +454,10 @@ public class BattlePhaseController implements Initializable {
                     this.playerOne.getSelectedCard().remove(selectedCard);
                     this.cardsOnArena.remove(selectedCard);
                 }
+                else{
+                    int indexOfSelectedCard = this.playerOne.getSelectedCard().indexOf(selectedCard);
+                    this.playerOneFadeTransition.get(indexOfSelectedCard).play();
+                }
                 this.renderCardsHp();
                 this.renderPlayerOneCardImgViews();
                 this.endTurn(e);
@@ -434,6 +473,8 @@ public class BattlePhaseController implements Initializable {
                     RockTribe card = (RockTribe)cardThisTurn;
                     selectedCard.shielding(card.getShield());
                 }
+                int indexOfSelectedCard = this.playerOne.getSelectedCard().indexOf(selectedCard);
+                this.playerOneFadeTransition.get(indexOfSelectedCard).play();
                 this.renderCardsHp();
                 this.endTurn(e);
             }
@@ -448,6 +489,8 @@ public class BattlePhaseController implements Initializable {
                     RockTribe card = (RockTribe)cardThisTurn;
                     selectedCard.shielding(card.getShield());
                 }
+                int indexOfSelectedCard = this.playerTwo.getSelectedCard().indexOf(selectedCard);
+                this.playerTwoFadeTransition.get(indexOfSelectedCard).play();
                 this.renderCardsHp();
                 this.endTurn(e);
             }

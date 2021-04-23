@@ -36,7 +36,7 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="232.0" layoutY="451.0" prefHeight="200.0" prefWidth="630.0" spacing="40.0">
+      <HBox layoutX="232.0" layoutY="446.0" prefHeight="200.0" prefWidth="630.0" spacing="40.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -52,7 +52,7 @@
                            </cursor></Button>
                      </children>
                   </HBox>
-                  <ImageView fx:id="imgP1_1" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP1_1" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="hpP1_1" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
                      <font>
                         <Font name="Consolas" size="14.0" />
@@ -74,7 +74,7 @@
                            </cursor></Button>
                      </children>
                   </HBox>
-                  <ImageView fx:id="imgP1_2" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP1_2" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="hpP1_2" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
                      <font>
                         <Font name="Consolas" size="14.0" />
@@ -96,7 +96,7 @@
                            </cursor></Button>
                      </children>
                   </HBox>
-                  <ImageView fx:id="imgP1_3" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP1_3" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="hpP1_3" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
                      <font>
                         <Font name="Consolas" size="14.0" />
@@ -118,7 +118,7 @@
                            </cursor></Button>
                      </children>
                   </HBox>
-                  <ImageView fx:id="imgP1_4" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP1_4" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="hpP1_4" alignment="CENTER" prefHeight="28.0" prefWidth="150.0" textFill="RED">
                      <font>
                         <Font name="Consolas" size="14.0" />
@@ -137,7 +137,7 @@
                         <Font name="Consolas" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgP2_1" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP2_1" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="attackBtnP2_1" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
@@ -159,7 +159,7 @@
                         <Font name="Consolas" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgP2_2" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP2_2" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="attackBtnP2_2" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
@@ -181,7 +181,7 @@
                         <Font name="Consolas" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgP2_3" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP2_3" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="attackBtnP2_3" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
@@ -203,7 +203,7 @@
                         <Font name="Consolas" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgP2_4" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgP2_4" fitHeight="220.0" fitWidth="150.0" onMouseClicked="#onSelect" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="attackBtnP2_4" mnemonicParsing="false" onAction="#onAttack" prefHeight="25.0" prefWidth="78.0" text="Attack">
