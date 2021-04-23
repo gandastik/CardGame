@@ -16,27 +16,27 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Label fx:id="playerOneName" layoutX="23.0" layoutY="684.0" text="Player:" textFill="WHITE">
+      <Label fx:id="playerOneName" layoutX="22.0" layoutY="631.0" text="Player:" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="18.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
          </font>
       </Label>
       <Label fx:id="playerTwoName" layoutX="1098.0" layoutY="13.0" text="Player: " textFill="WHITE">
          <font>
-            <Font name="Consolas" size="18.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="playerOneHp" layoutX="43.0" layoutY="619.0" text="Label :" textFill="WHITE">
+      <Label fx:id="playerOneHp" layoutX="46.0" layoutY="674.0" text="Label :" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="24.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="24.0" />
          </font>
       </Label>
       <Label fx:id="playerTwoHp" layoutX="1151.0" layoutY="66.0" text="Label :" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="24.0" />
+            <Font name="Tw Cen MT Condensed Extra Bold" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="232.0" layoutY="446.0" prefHeight="200.0" prefWidth="630.0" spacing="40.0">
+      <HBox layoutX="232.0" layoutY="456.0" prefHeight="200.0" prefWidth="630.0" spacing="40.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -128,7 +128,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="hboxP2" layoutX="372.0" layoutY="23.0" prefHeight="200.0" prefWidth="626.0" spacing="40.0">
+      <HBox fx:id="hboxP2" layoutX="372.0" layoutY="3.0" prefHeight="200.0" prefWidth="626.0" spacing="40.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -220,5 +220,10 @@
             </VBox>
          </children>
       </HBox>
+      <Label fx:id="criticalLabel" layoutX="515.0" layoutY="327.0" text="CRITICAL!!!" textFill="RED">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="60.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

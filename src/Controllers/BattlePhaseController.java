@@ -70,6 +70,9 @@ public class BattlePhaseController implements Initializable {
 
     private ArrayList<FadeTransition> playerOneFadeTransition;
     private ArrayList<FadeTransition> playerTwoFadeTransition;
+    @FXML
+    private Label criticalLabel;
+    private FadeTransition criticalFade;
 
     //Initializations
     @Override
@@ -79,6 +82,7 @@ public class BattlePhaseController implements Initializable {
         this.initPlayerTwoCardImgViews();
         this.initHpCards();
         this.initPlayersFadeTransition();
+        this.initCriticalFadeEffect();
 
         this.initSkillButtons();
         this.initAttackButtons();
@@ -164,6 +168,17 @@ public class BattlePhaseController implements Initializable {
              this.playerTwoFadeTransition.get(i).setCycleCount(4);
          }
 
+    }
+    public void initCriticalFadeEffect() {
+        this.criticalLabel.setVisible(false);
+        this.criticalFade = new FadeTransition(Duration.seconds(0.2), criticalLabel);
+        this.criticalFade.setOnFinished(e -> {
+            this.criticalFade.stop();
+            this.criticalLabel.setVisible(false);
+        });
+        this.criticalFade.setCycleCount(5);
+        this.criticalFade.setFromValue(0.0);
+        this.criticalFade.setToValue(1.0);
     }
 
     //Receiving data
@@ -363,6 +378,10 @@ public class BattlePhaseController implements Initializable {
         this.playerOne.setSelectedCard(this.playerOneTempList);
         this.playerTwo.setSelectedCard(this.playerTwoTempList);
     }
+    public void playCriticalEffect() {
+        this.criticalLabel.setVisible(true);
+        this.criticalFade.play();
+    }
 
     //Buttons Controllers
     public void onNext(ActionEvent e) throws Exception{
@@ -409,6 +428,7 @@ public class BattlePhaseController implements Initializable {
                 if(cardThisTurn.getTribe().equals("fire")){
                     FireTribe card = (FireTribe)cardThisTurn;
                     if(card.isCritical()){
+                        this.playCriticalEffect();
                         System.out.println("CRITICALLLL !!! !! !");
                         selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
                     }
@@ -439,6 +459,7 @@ public class BattlePhaseController implements Initializable {
                 if(cardThisTurn.getTribe().equals("fire")){
                     FireTribe card = (FireTribe)cardThisTurn;
                     if(card.isCritical()){
+                        this.playCriticalEffect();
                         System.out.println("CRITICALLLL !!! !! !");
                         selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
                     }
