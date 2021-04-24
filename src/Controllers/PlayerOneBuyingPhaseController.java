@@ -16,8 +16,11 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -213,19 +216,21 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     //Button Controllers
     public void onNext(ActionEvent e) throws Exception{
         //send players object to BattlePhaseController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerTwoBuyingPhase.fxml"));
-        root = loader.load();
+        if(this.playerOne.getSelectedCard().size() > 0){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerTwoBuyingPhase.fxml"));
+            root = loader.load();
 
-        //Change to playerTwoBuyingPhaseController later when done dev. and change the entire of playerTwoController to
-        // be duplicate of playerOne
-        PlayerTwoBuyingPhaseController controller = loader.getController();
-        controller.receiveData(this.playerOne, this.playerTwo);
+            //Change to playerTwoBuyingPhaseController later when done dev. and change the entire of playerTwoController to
+            // be duplicate of playerOne
+            PlayerTwoBuyingPhaseController controller = loader.getController();
+            controller.receiveData(this.playerOne, this.playerTwo);
 
-        //Switch to BattlePhaseScene
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            //Switch to BattlePhaseScene
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
     public void onBuy(ActionEvent e) {
         //can only buy when player hold less than 7 cards on the hands
@@ -285,7 +290,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
             this.playerOne.removeCard(card);
 
             //Transaction -> add money to player and render the player's money on screen.
-            this.playerOne.addMoney(card.getCost());
+            this.playerOne.addMoney(card.getCost() / 2);
             this.renderPlayerMoney();
         }
         this.renderPlayerHand();
