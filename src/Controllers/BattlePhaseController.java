@@ -73,7 +73,7 @@ public class BattlePhaseController implements Initializable {
     private ArrayList<FadeTransition> playerOneFadeTransition;
     private ArrayList<FadeTransition> playerTwoFadeTransition;
     @FXML
-    private Label criticalLabel;
+    private Label criticalLabel, numberOfRound;
     private FadeTransition criticalFade;
 
     //Initializations
@@ -85,6 +85,7 @@ public class BattlePhaseController implements Initializable {
         this.initHpCards();
         this.initPlayersFadeTransition();
         this.initCriticalFadeEffect();
+        this.initNumberOfRoundLabel();
 
         this.initSkillButtons();
         this.initAttackButtons();
@@ -181,6 +182,9 @@ public class BattlePhaseController implements Initializable {
         this.criticalFade.setCycleCount(5);
         this.criticalFade.setFromValue(0.0);
         this.criticalFade.setToValue(1.0);
+    }
+    public void initNumberOfRoundLabel() {
+        this.numberOfRound.setText("" + BattlePhaseController.numberOfTurn);
     }
 
     //Receiving data

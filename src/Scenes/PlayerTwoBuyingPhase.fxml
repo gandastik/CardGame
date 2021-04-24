@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="bodybg" stylesheets="@../PlayerTwoBuyingPhase.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlayerTwoBuyingPhaseController">
     <children>
-        <Label layoutX="402.0" layoutY="25.0" text="BUYING PHASE 1">
+        <Label layoutX="402.0" layoutY="25.0" text="BUYING PHASE 2">
             <font>
                 <Font name="Tw Cen MT Condensed Extra Bold" size="72.0" />
             </font>

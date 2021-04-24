@@ -35,12 +35,12 @@ public class ConfirmWinningController{
 
         this.winnerName.setText(this.playerWinner.getName() + " Has won Round No. " + BattlePhaseController.numberOfTurn);
         if(this.playerWinner.getName().equals(this.playerOne.getName())){
-            this.summary.setText(this.playerWinner.getName() + " Has made " + (2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken) + " golds\n" +
-                    this.playerTwo.getName() + " Has lost " + this.totalDmgTaken + " life points");
+            this.summary.setText(this.playerWinner.getName() + " + " + (2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken) + " golds\n" +
+                    this.playerTwo.getName() + " - " + this.totalDmgTaken + " life points");
         }
         else {
-            this.summary.setText(this.playerWinner.getName() + " Has made " + (2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken) + " golds\n" +
-                    this.playerOne.getName() + " Has lost " + this.totalDmgTaken + " life points");
+            this.summary.setText(this.playerWinner.getName() + " + " + (2 * BattlePhaseController.numberOfTurn + this.totalDmgTaken) + " golds\n" +
+                    this.playerOne.getName() + " - " + this.totalDmgTaken + " life points");
         }
     }
 

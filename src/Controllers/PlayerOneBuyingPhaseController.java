@@ -326,7 +326,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
                 int hp = card.getHp();
                 int maxHp = card.getMaxHp();
                 String tribe = card.getTribe();
-                Tooltip.install(this.buyingImageViews[i], new Tooltip("card name: " + name + "\nlevel: " + level +
+                Tooltip.install(this.buyingImageViews[i], new Tooltip("name: " + name + "\nlevel: " + level +
                         "\nhp: " + hp + "/" + maxHp + "\ntribe: " + tribe));
             }
             else {
@@ -350,7 +350,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
                 int hp = card.getHp();
                 int maxHp = card.getMaxHp();
                 String tribe = card.getTribe();
-                Tooltip.install(this.playerHandsImageViews[i], new Tooltip("card name: " + name + "\nlevel: " + level +
+                Tooltip.install(this.playerHandsImageViews[i], new Tooltip("name: " + name + "\nlevel: " + level +
                         "\nhp: " + hp + "/" + maxHp + "\ntribe: " + tribe));
             }
             else {

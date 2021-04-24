@@ -8,7 +8,7 @@ public class Player {
     private int money;
     private ArrayList<Card> hands;
     private ArrayList<Card> selectedCard;
-    private static final int MAXNUMCARDONHAND = 7;
+    public static final int MAXNUMCARDONHAND = 7;
 
     //Constructor
     public Player() {
@@ -21,7 +21,7 @@ public class Player {
     public Player(String name){
         this.name = name;
         this.hp = 20;
-        this.money = 25;
+        this.money = 15;
         this.hands = new ArrayList<Card>();
         this.selectedCard = new ArrayList<Card>();
     }
