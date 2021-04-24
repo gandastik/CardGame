@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConfirmWinningController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@../WinningScene.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConfirmWinningController">
    <children>
-      <Label fx:id="winnerName" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" prefHeight="109.0" prefWidth="512.0" text="Player has won Round no. x">
+      <Label fx:id="winnerName" alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="74.0" prefHeight="109.0" prefWidth="512.0" text="Player has won Round no. x" textFill="WHITE">
          <font>
-            <Font name="Tw Cen MT Condensed" size="30.0" />
+            <Font name="Tw Cen MT Condensed" size="38.0" />
          </font>
       </Label>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="240.0" mnemonicParsing="false" onAction="#onNext" text="NEXT">
@@ -17,7 +17,7 @@
             <Font name="Tw Cen MT Condensed" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="summary" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="103.0" prefHeight="119.0" prefWidth="305.0" text="Label">
+      <Label fx:id="summary" alignment="CENTER" contentDisplay="CENTER" layoutX="149.0" layoutY="136.0" prefHeight="119.0" prefWidth="305.0" text="Label" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed" size="20.0" />
          </font>
