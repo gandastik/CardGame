@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -76,6 +78,9 @@ public class BattlePhaseController implements Initializable {
     private Label criticalLabel, numberOfRound;
     private FadeTransition criticalFade;
 
+    private Media criticalSFX;
+    private MediaPlayer mediaPlayer;
+
     //Initializations
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -85,6 +90,7 @@ public class BattlePhaseController implements Initializable {
         this.initHpCards();
         this.initPlayersFadeTransition();
         this.initCriticalFadeEffect();
+        this.initCriticalSoundEffect();
         this.initNumberOfRoundLabel();
 
         this.initSkillButtons();
@@ -186,6 +192,11 @@ public class BattlePhaseController implements Initializable {
     public void initNumberOfRoundLabel() {
         this.numberOfRound.setText("" + BattlePhaseController.numberOfTurn);
     }
+    public void initCriticalSoundEffect(){
+        this.criticalSFX = new Media(getClass().getResource("/Assets/sfx/player_take_dmg.wav").toExternalForm());
+        this.mediaPlayer = new MediaPlayer(this.criticalSFX);
+        this.mediaPlayer.setOnEndOfMedia(() -> this.mediaPlayer.stop());
+    }
 
     //Receiving data
     public void receiveData(Player one, Player two){
@@ -243,23 +254,25 @@ public class BattlePhaseController implements Initializable {
 
         if(this.checkIfFinish()){
             //If the battle is finished display the winning scene
+            this.stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             FXMLLoader confirmLoader = new FXMLLoader(getClass().getResource("../Scenes/ConfirmWinningScene.fxml"));
             root = confirmLoader.load();
             ConfirmWinningController controller = confirmLoader.getController();
-            controller.receiveData(this.playerWinner, this.playerOne, this.playerTwo, this.totalDmgTaken);
+            controller.receiveData(this.playerWinner, this.playerOne, this.playerTwo, this.totalDmgTaken, this.stage);
             Scene exitScene = new Scene(root);
 
             Stage window1 = new Stage();
             window1.initModality(Modality.APPLICATION_MODAL);
-            window1.setTitle(this.playerWinner.getName() + " is the winner");
+            window1.setTitle("Card Battle");
+            window1.getIcons().add(new Image("./Assets/icon.png"));
             window1.setResizable(false);
 
             window1.setScene(exitScene);
             window1.showAndWait();
             //If the click OK close the winner popup and change the current stage to PlayerOneBuyingPhase.
             if(ConfirmWinningController.onNext){
-                stage = (Stage) ((ImageView)e.getSource()).getScene().getWindow();
-                stage.close();
+//                stage = (Stage) ((ImageView)e.getSource()).getScene().getWindow();
+//                stage.close();
             }
         }
         else if(!this.checkIfFinish()){
@@ -442,6 +455,7 @@ public class BattlePhaseController implements Initializable {
                 if(cardThisTurn.getTribe().equals("fire")){
                     FireTribe card = (FireTribe)cardThisTurn;
                     if(card.isCritical()){
+                        this.mediaPlayer.play();
                         this.playCriticalEffect();
                         System.out.println("CRITICALLLL !!! !! !");
                         selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
@@ -473,6 +487,7 @@ public class BattlePhaseController implements Initializable {
                 if(cardThisTurn.getTribe().equals("fire")){
                     FireTribe card = (FireTribe)cardThisTurn;
                     if(card.isCritical()){
+                        this.mediaPlayer.play();
                         this.playCriticalEffect();
                         System.out.println("CRITICALLLL !!! !! !");
                         selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);

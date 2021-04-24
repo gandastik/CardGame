@@ -28,6 +28,9 @@ public class StartSceneController {
     Player playerOne;
     Player playerTwo;
 
+    private static Media media;
+    private static MediaPlayer mediaPlayer;
+
     public void onOk(ActionEvent e) throws Exception{
         //send players object to BuyingPhaseController
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerOneBuyingPhase.fxml"));
@@ -54,11 +57,19 @@ public class StartSceneController {
             aleartName.show();
         }
         else{
+            this.initBackgroundMusic();
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
+    }
+    public void initBackgroundMusic() {
+        media = new Media(getClass().getResource("../Assets/sfx/bgmusic.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.05);
+        mediaPlayer.play();
     }
 
     public Boolean isTextFieldEmpty(TextField field){

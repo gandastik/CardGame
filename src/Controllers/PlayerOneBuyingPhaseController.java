@@ -115,7 +115,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         this.buyingLabelsCost[7] = this.labelCost8;
     }
     public void initVariables(){
-        this.rerollCost = 5;
+        this.rerollCost = 0;
     }
 
     //Receiving data
