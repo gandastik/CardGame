@@ -20,6 +20,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -78,8 +79,7 @@ public class BattlePhaseController implements Initializable {
     private Label criticalLabel, numberOfRound;
     private FadeTransition criticalFade;
 
-    private Media criticalSFX;
-    private MediaPlayer mediaPlayer;
+    private SoundEffects sfx;
 
     //Initializations
     @Override
@@ -90,7 +90,7 @@ public class BattlePhaseController implements Initializable {
         this.initHpCards();
         this.initPlayersFadeTransition();
         this.initCriticalFadeEffect();
-        this.initCriticalSoundEffect();
+        this.initSoundEffects();
         this.initNumberOfRoundLabel();
 
         this.initSkillButtons();
@@ -192,10 +192,8 @@ public class BattlePhaseController implements Initializable {
     public void initNumberOfRoundLabel() {
         this.numberOfRound.setText("" + BattlePhaseController.numberOfTurn);
     }
-    public void initCriticalSoundEffect(){
-        this.criticalSFX = new Media(getClass().getResource("/Assets/sfx/player_take_dmg.wav").toExternalForm());
-        this.mediaPlayer = new MediaPlayer(this.criticalSFX);
-        this.mediaPlayer.setOnEndOfMedia(() -> this.mediaPlayer.stop());
+    public void initSoundEffects() {
+        this.sfx = new SoundEffects();
     }
 
     //Receiving data
@@ -262,6 +260,7 @@ public class BattlePhaseController implements Initializable {
             Scene exitScene = new Scene(root);
 
             Stage window1 = new Stage();
+            window1.initStyle(StageStyle.UNDECORATED);
             window1.initModality(Modality.APPLICATION_MODAL);
             window1.setTitle("Card Battle");
             window1.getIcons().add(new Image("./Assets/icon.png"));
@@ -455,17 +454,19 @@ public class BattlePhaseController implements Initializable {
                 if(cardThisTurn.getTribe().equals("fire")){
                     FireTribe card = (FireTribe)cardThisTurn;
                     if(card.isCritical()){
-                        this.mediaPlayer.play();
+                        this.sfx.playCritical();
                         this.playCriticalEffect();
                         System.out.println("CRITICALLLL !!! !! !");
                         selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
                     }
                     else {
                         selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                        this.sfx.playTakeDmg();
                     }
                 }
                 else {
                     selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                    this.sfx.playTakeDmg();
                 }
                 if(selectedCard.getIsDead()){
                     System.out.println("DEAD");
@@ -487,17 +488,19 @@ public class BattlePhaseController implements Initializable {
                 if(cardThisTurn.getTribe().equals("fire")){
                     FireTribe card = (FireTribe)cardThisTurn;
                     if(card.isCritical()){
-                        this.mediaPlayer.play();
+                        this.sfx.playCritical();
                         this.playCriticalEffect();
                         System.out.println("CRITICALLLL !!! !! !");
                         selectedCard.takeDmg(this.cardThisTurn.getDamage() * 2);
                     }
                     else {
                         selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                        this.sfx.playTakeDmg();
                     }
                 }
                 else {
                     selectedCard.takeDmg(this.cardThisTurn.getDamage());
+                    this.sfx.playTakeDmg();
                 }
                 if(selectedCard.getIsDead()){
                     System.out.println("DEAD");
@@ -555,6 +558,7 @@ public class BattlePhaseController implements Initializable {
         if(!isSkill){
             System.out.println("ATTACK MODE");
             this.isAttack = true;
+            this.sfx.playMenuClick();
             if(indexOfThisButton < 4) {
                 for (ImageView playerOneImgView : this.playerOneImgViews) {
                     playerOneImgView.setOpacity(0.25);
@@ -573,6 +577,7 @@ public class BattlePhaseController implements Initializable {
         String btnId = thisButton.getId();
         if(!this.isAttack && !cardThisTurn.getTribe().equals("fire")){
             System.out.println("SKILL MODE");
+            this.sfx.playMenuClick();
             this.isSkill = true;
             if(btnId.startsWith("skillBtnP1") && ( this.cardThisTurn.getTribe().equals("water") || this.cardThisTurn.getTribe().equals("rock") )){
                 for (ImageView playerTwoImgView : this.playerTwoImgViews) {

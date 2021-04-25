@@ -3,6 +3,7 @@ package Controllers;
 import Classes.Card;
 import Classes.CardsCollection;
 import Classes.Player;
+import Classes.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +51,8 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
     private ImageView imgP1, imgP2, imgP3, imgP4, imgP5, imgP6, imgP7;
     private ImageView[] playerHandsImageViews;
 
+    private SoundEffects sfx;
+
 
     //Initializations
     @Override
@@ -59,6 +62,7 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
         this.initBuyingImageViews();
         this.initBuyingLabelsCost();
         this.initPlayerHandsImageViews();
+        this.initSoundEffects();
         //rendering blank card on the empty slot.
         for(int j = 0;j<Player.getMaxNumCardOnHand();j++){
             playerHandsImageViews[j].setImage(new Image("./Assets/blankCard.png"));
@@ -113,6 +117,9 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
     }
     public void initVariables(){
         this.rerollCost = 0;
+    }
+    public void initSoundEffects() {
+        this.sfx = new SoundEffects();
     }
 
     //Receiving data
@@ -228,6 +235,7 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+        this.sfx.playMenuClick();
     }
     public void onBuy(ActionEvent e) {
         //can only buy when player hold less than 7 cards on the hands
@@ -264,6 +272,7 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
                 this.renderPlayerHand();
             }
         }
+        this.sfx.playMenuClick();
     }
     public void onReroll(ActionEvent e) {
         //Reroll actions -> checking if player have enough money to reroll
@@ -277,6 +286,7 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
             this.renderBuyingHand();
             this.renderPlayerMoney();
         }
+        this.sfx.playMenuClick();
     }
     public void onSell(ActionEvent e) {
         //Selling actions on playerOne turn
@@ -288,6 +298,10 @@ public class PlayerTwoBuyingPhaseController implements Initializable {
             //Transaction -> add money to player and render the player's money on screen.
             this.playerTwo.addMoney(card.getCost() / 2 );
             this.renderPlayerMoney();
+            this.sfx.playSelling();
+        }
+        else{
+            this.sfx.playMenuClick();
         }
         this.renderPlayerHand();
     }

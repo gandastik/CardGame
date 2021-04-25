@@ -1,6 +1,7 @@
 package Controllers;
 
 import Classes.Player;
+import Classes.SoundEffects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-import java.io.File;
 
 public class StartSceneController {
     private Stage stage;
@@ -31,6 +31,8 @@ public class StartSceneController {
     private static Media media;
     private static MediaPlayer mediaPlayer;
 
+    private SoundEffects sfx;
+
     public void onOk(ActionEvent e) throws Exception{
         //send players object to BuyingPhaseController
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerOneBuyingPhase.fxml"));
@@ -40,6 +42,10 @@ public class StartSceneController {
         this.playerOne = new Player(playerOneTextField.getText());
         this.playerTwo = new Player(playerTwoTextField.getText());
         controller.receiveData(this.playerOne, this.playerTwo);
+
+        //Button SFX
+        this.sfx = new SoundEffects();
+        this.sfx.playMenuClick();
 
         //Switch to OpenScene also check if one of the text field is empty
         if(isTextFieldEmpty(playerOneTextField) || isTextFieldEmpty(playerTwoTextField)){
