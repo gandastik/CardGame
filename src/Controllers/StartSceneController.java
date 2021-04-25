@@ -68,7 +68,7 @@ public class StartSceneController {
         media = new Media(getClass().getResource("../Assets/sfx/bgmusic.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(0.05);
+        mediaPlayer.setVolume(0.025);
         mediaPlayer.play();
     }
 
