@@ -19,7 +19,7 @@
             <Font name="Tw Cen MT Condensed Extra Bold" size="72.0" />
          </font>
       </Label>
-      <Button layoutX="1153.0" layoutY="45.0" mnemonicParsing="false" onAction="#onNext" text="next">
+      <Button layoutX="1153.0" layoutY="45.0" mnemonicParsing="false" onAction="#onNext" text="Next">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
          </font>
@@ -28,7 +28,7 @@
          </cursor>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-      <Button layoutX="524.0" layoutY="391.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="30.0" prefWidth="84.0" text="reroll" textAlignment="CENTER">
+      <Button layoutX="524.0" layoutY="391.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="30.0" prefWidth="84.0" text="Reroll" textAlignment="CENTER">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
          </font>
@@ -251,7 +251,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell1" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
+                        <Button fx:id="sell1" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -271,7 +271,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell2" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="160.0" text="sell">
+                        <Button fx:id="sell2" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="160.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -291,7 +291,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell3" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="154.0" text="sell">
+                        <Button fx:id="sell3" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="154.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -311,7 +311,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell4" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="157.0" text="sell">
+                        <Button fx:id="sell4" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="157.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -331,7 +331,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell5" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
+                        <Button fx:id="sell5" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -351,7 +351,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell6" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="166.0" text="sell">
+                        <Button fx:id="sell6" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="166.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -371,7 +371,7 @@
                      </cursor></ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="sell7" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="sell">
+                        <Button fx:id="sell7" mnemonicParsing="false" onAction="#onSell" prefHeight="27.0" prefWidth="156.0" text="Sell">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
                            </font>
@@ -390,7 +390,7 @@
             <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="rerollCostLabel" layoutX="638.0" layoutY="398.0" text="reroll cost : " textFill="WHITE">
+      <Label fx:id="rerollCostLabel" layoutX="638.0" layoutY="398.0" text="Reroll cost : " textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed" size="16.0" />
          </font>
