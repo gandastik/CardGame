@@ -21,7 +21,7 @@ public class Main extends Application {
         primaryStage.setTitle("Card Battle");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.getIcons().add(new Image("Assets/icon.png"));
         primaryStage.addEventHandler(KeyEvent.KEY_RELEASED, (KeyEvent e) -> {
             if(KeyCode.ESCAPE == e.getCode()){

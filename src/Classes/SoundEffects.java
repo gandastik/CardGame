@@ -21,6 +21,10 @@ public class SoundEffects {
     private Media sellingSound;
     private MediaPlayer sellingMediaPlayer;
 
+    //Healing sfx
+    private Media healingSound;
+    private MediaPlayer healingMediaPlayer;
+
     public void playMenuClick() {
         menuClick = new Media(getClass().getResource("/Assets/sfx/click.wav").toExternalForm());
         menuClickPlayer = new MediaPlayer(menuClick);
@@ -46,5 +50,12 @@ public class SoundEffects {
         this.sellingMediaPlayer = new MediaPlayer(this.sellingSound);
         this.sellingMediaPlayer.setVolume(0.15);
         this.sellingMediaPlayer.play();
+    }
+
+    public void playHealing() {
+        this.healingSound = new Media(getClass().getResource("/Assets/sfx/healing.wav").toExternalForm());
+        this.healingMediaPlayer = new MediaPlayer(this.healingSound);
+        this.healingMediaPlayer.setVolume(0.10);
+        this.healingMediaPlayer.play();
     }
 }

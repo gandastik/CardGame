@@ -516,15 +516,18 @@ public class BattlePhaseController implements Initializable {
                 this.endTurn(e);
             }
         }
+        /* PLAYER ONE CARD'S TURN (SKILL MODE) */
         else if(this.isSkill && this.cardThisTurn.getSelectedBy().getName().equals(this.playerOne.getName())){
             if(imgId.startsWith("imgP1") && selectedCard != null){
                 if(this.cardThisTurn.getTribe().equals("water")){
                     WaterTribe card = (WaterTribe)cardThisTurn;
                     selectedCard.healing(card.getHeal());
+                    this.sfx.playHealing();
                 }
                 else if(this.cardThisTurn.getTribe().equals("rock")){
                     RockTribe card = (RockTribe)cardThisTurn;
                     selectedCard.shielding(card.getShield());
+                    this.sfx.playHealing();
                 }
                 int indexOfSelectedCard = this.playerOne.getSelectedCard().indexOf(selectedCard);
                 this.playerOneFadeTransition.get(indexOfSelectedCard).play();
@@ -532,15 +535,18 @@ public class BattlePhaseController implements Initializable {
                 this.endTurn(e);
             }
         }
+        /* PLAYER TWO CARD'S TURN (SKILL MODE) */
         else if(this.isSkill && this.cardThisTurn.getSelectedBy().getName().equals(this.playerTwo.getName())){
             if(imgId.startsWith("imgP2") && selectedCard != null){
                 if(this.cardThisTurn.getTribe().equals("water")){
                     WaterTribe card = (WaterTribe)cardThisTurn;
                     selectedCard.healing(card.getHeal());
+                    this.sfx.playHealing();
                 }
                 else if(this.cardThisTurn.getTribe().equals("rock")){
                     RockTribe card = (RockTribe)cardThisTurn;
                     selectedCard.shielding(card.getShield());
+                    this.sfx.playHealing();
                 }
                 int indexOfSelectedCard = this.playerTwo.getSelectedCard().indexOf(selectedCard);
                 this.playerTwoFadeTransition.get(indexOfSelectedCard).play();
