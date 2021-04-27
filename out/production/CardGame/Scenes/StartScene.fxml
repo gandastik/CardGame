@@ -14,8 +14,14 @@
             <Font name="Tw Cen MT Condensed Extra Bold" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="playerOneTextField" layoutX="162.0" layoutY="333.0" prefHeight="55.0" prefWidth="232.0" />
-      <TextField fx:id="playerTwoTextField" layoutX="876.0" layoutY="333.0" prefHeight="55.0" prefWidth="232.0" />
+      <TextField fx:id="playerOneTextField" layoutX="162.0" layoutY="333.0" prefHeight="55.0" prefWidth="232.0">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="playerTwoTextField" layoutX="876.0" layoutY="333.0" prefHeight="55.0" prefWidth="232.0">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="18.0" />
+         </font></TextField>
       <Button layoutX="615.0" layoutY="558.0" mnemonicParsing="false" onAction="#onOk" text="OK">
          <font>
             <Font name="Tw Cen MT Condensed" size="22.0" />
