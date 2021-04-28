@@ -290,7 +290,7 @@ public class BattlePhaseController implements Initializable {
                 }
             }
             for(int i=0;i<this.skillButtons.size();i++) {
-                if(i == index) {
+                if(i == index && !this.cardThisTurn.getTribe().equals("fire")) {
                     this.skillButtons.get(i).setVisible(true);
                 }
             }
@@ -302,7 +302,7 @@ public class BattlePhaseController implements Initializable {
                 }
             }
             for(int i=4;i<this.skillButtons.size();i++) {
-                if(i == index+4) {
+                if(i == index+4 && !this.cardThisTurn.getTribe().equals("fire")) {
                     this.skillButtons.get(i).setVisible(true);
                 }
             }
