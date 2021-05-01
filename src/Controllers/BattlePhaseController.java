@@ -430,9 +430,8 @@ public class BattlePhaseController implements Initializable {
     public void onMouseEntered(MouseEvent e) {
         ImageView imgV = (ImageView)e.getSource();
         imgV.setOnMouseEntered(c -> {
-            imgV.setScaleX(1.25);
-            imgV.setScaleY(1.25);
-//            imgV.setStyle("-fx-border-color: #545454;");
+            imgV.setScaleX(1.15);
+            imgV.setScaleY(1.15);
         });
     }
     public void onMouseExited(MouseEvent e){
