@@ -40,6 +40,18 @@ public class OpenSceneController implements Initializable {
         this.sfx.playMenuClick();
     }
 
+    public void onCredit(ActionEvent e) throws Exception{
+        //Switch to Creditscene
+        root = FXMLLoader.load(getClass().getResource("../Scenes/CreditScene.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        //Player menuclick sfx
+        this.sfx.playMenuClick();
+    }
+
     public void onQuit(ActionEvent e) throws Exception{
         stage = (Stage) scenePane.getScene().getWindow();
         System.out.println("You have quit the program!");
