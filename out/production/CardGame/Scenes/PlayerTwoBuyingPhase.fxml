@@ -27,7 +27,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+<!--        <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />-->
         <Button layoutX="524.0" layoutY="391.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="30.0" prefWidth="84.0" text="Reroll" textAlignment="CENTER">
             <font>
                 <Font name="Tw Cen MT Condensed Extra Bold" size="16.0" />
