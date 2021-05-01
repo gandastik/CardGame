@@ -17,7 +17,7 @@
             <Font name="Tw Cen MT Condensed Extra Bold" size="32.0" />
          </font>
       </Button>
-      <Button layoutX="1160.0" layoutY="650.0" mnemonicParsing="false" text="CREDIT">
+      <Button layoutX="1160.0" layoutY="650.0" mnemonicParsing="false" onAction="#onCredit" text="CREDIT">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="20.0" />
          </font>
