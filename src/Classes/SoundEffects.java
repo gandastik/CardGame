@@ -39,9 +39,9 @@ public class SoundEffects {
     }
 
     public void playTakeDmg() {
-        this.takeDmgSound = new Media(getClass().getResource("/Assets/sfx/classic_hurt.mp3").toExternalForm());
+        this.takeDmgSound = new Media(getClass().getResource("/Assets/sfx/attack.mp3").toExternalForm());
         this.takeDmgMediaPlayer = new MediaPlayer(this.takeDmgSound);
-        this.takeDmgMediaPlayer.setVolume(0.15);
+        this.takeDmgMediaPlayer.setVolume(0.50);
         this.takeDmgMediaPlayer.play();
     }
 
