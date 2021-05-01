@@ -428,19 +428,19 @@ public class BattlePhaseController implements Initializable {
         stage.show();
     }
     public void onMouseEntered(MouseEvent e) {
-//        ImageView imgV = (ImageView)e.getSource();
-//        imgV.setOnMouseEntered(c -> {
-//            imgV.setScaleX(1.25);
-//            imgV.setScaleY(1.25);
-////            imgV.setStyle("-fx-border-color: #545454;");
-//        });
+        ImageView imgV = (ImageView)e.getSource();
+        imgV.setOnMouseEntered(c -> {
+            imgV.setScaleX(1.25);
+            imgV.setScaleY(1.25);
+//            imgV.setStyle("-fx-border-color: #545454;");
+        });
     }
     public void onMouseExited(MouseEvent e){
-//        ImageView imgV = (ImageView)e.getSource();
-//        imgV.setOnMouseExited(c -> {
-//            imgV.setScaleX(1);
-//            imgV.setScaleY(1);
-//        });
+        ImageView imgV = (ImageView)e.getSource();
+        imgV.setOnMouseExited(c -> {
+            imgV.setScaleX(1);
+            imgV.setScaleY(1);
+        });
     }
     public void onSelect(MouseEvent e) throws Exception{
         ImageView imgV = (ImageView)e.getSource();

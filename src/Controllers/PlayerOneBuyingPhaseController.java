@@ -25,9 +25,6 @@ import java.util.ResourceBundle;
 
 
 public class PlayerOneBuyingPhaseController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     Player playerOne;
     Player playerTwo;
@@ -221,7 +218,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
         //send players object to BattlePhaseController
         if(this.playerOne.getSelectedCard().size() > 0){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/PlayerTwoBuyingPhase.fxml"));
-            root = loader.load();
+            Parent root = loader.load();
 
             //Change to playerTwoBuyingPhaseController later when done dev. and change the entire of playerTwoController to
             // be duplicate of playerOne
@@ -229,8 +226,8 @@ public class PlayerOneBuyingPhaseController implements Initializable {
             controller.receiveData(this.playerOne, this.playerTwo);
 
             //Switch to BattlePhaseScene
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
