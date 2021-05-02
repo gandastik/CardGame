@@ -5,57 +5,52 @@ import javafx.scene.media.MediaPlayer;
 
 public class SoundEffects {
 
-    //Buttons
-    private Media menuClick;
-    private MediaPlayer menuClickPlayer;
+    //Background Music
+    public static MediaPlayer bgMediaPlayer;
 
-    //Critical sfx
-    private Media criticalSound;
-    private MediaPlayer criticalMediaPlayer;
-
-    //Card takes dmg sfx
-    private Media takeDmgSound;
-    private MediaPlayer takeDmgMediaPlayer;
-
-    //Selling Cards sfx
-    private Media sellingSound;
-    private MediaPlayer sellingMediaPlayer;
-
-    //Healing sfx
-    private Media healingSound;
-    private MediaPlayer healingMediaPlayer;
-
-    public void playMenuClick() {
-        menuClick = new Media(getClass().getResource("/Assets/sfx/click.wav").toExternalForm());
-        menuClickPlayer = new MediaPlayer(menuClick);
-        this.menuClickPlayer.play();
+    public static void playBackgroundMusic() {
+        Media bgMedia = new Media(SoundEffects.class.getResource("../Assets/sfx/bgmusic.mp3").toExternalForm());
+        bgMediaPlayer = new MediaPlayer(bgMedia);
+        bgMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        bgMediaPlayer.setVolume(0.025);
+        bgMediaPlayer.play();
     }
 
-    public void playCritical() {
-        this.criticalSound = new Media(getClass().getResource("/Assets/sfx/strongpunch.mp3").toExternalForm());
-        this.criticalMediaPlayer = new MediaPlayer(this.criticalSound);
-        this.criticalMediaPlayer.setVolume(0.25);
-        this.criticalMediaPlayer.play();
+    public static void stopBgMusic() {
+        bgMediaPlayer.stop();
     }
 
-    public void playTakeDmg() {
-        this.takeDmgSound = new Media(getClass().getResource("/Assets/sfx/attack.mp3").toExternalForm());
-        this.takeDmgMediaPlayer = new MediaPlayer(this.takeDmgSound);
-        this.takeDmgMediaPlayer.setVolume(0.50);
-        this.takeDmgMediaPlayer.play();
+    public static void playMenuClick() {
+        Media menuClick = new Media(SoundEffects.class.getResource("/Assets/sfx/click.wav").toExternalForm());
+        MediaPlayer menuClickPlayer = new MediaPlayer(menuClick);
+        menuClickPlayer.play();
     }
 
-    public void playSelling(){
-        this.sellingSound = new Media(getClass().getResource("/Assets/sfx/selling.wav").toExternalForm());
-        this.sellingMediaPlayer = new MediaPlayer(this.sellingSound);
-        this.sellingMediaPlayer.setVolume(0.15);
-        this.sellingMediaPlayer.play();
+    public static void playCritical() {
+        Media criticalSound = new Media(SoundEffects.class.getResource("/Assets/sfx/strongpunch.mp3").toExternalForm());
+        MediaPlayer criticalMediaPlayer = new MediaPlayer(criticalSound);
+        criticalMediaPlayer.setVolume(0.25);
+        criticalMediaPlayer.play();
     }
 
-    public void playHealing() {
-        this.healingSound = new Media(getClass().getResource("/Assets/sfx/healing.wav").toExternalForm());
-        this.healingMediaPlayer = new MediaPlayer(this.healingSound);
-        this.healingMediaPlayer.setVolume(0.10);
-        this.healingMediaPlayer.play();
+    public static void playTakeDmg() {
+        Media takeDmgSound = new Media(SoundEffects.class.getResource("/Assets/sfx/attack.mp3").toExternalForm());
+        MediaPlayer takeDmgMediaPlayer = new MediaPlayer(takeDmgSound);
+        takeDmgMediaPlayer.setVolume(0.50);
+        takeDmgMediaPlayer.play();
+    }
+
+    public static void playSelling(){
+        Media sellingSound = new Media(SoundEffects.class.getResource("/Assets/sfx/selling.wav").toExternalForm());
+        MediaPlayer sellingMediaPlayer = new MediaPlayer(sellingSound);
+        sellingMediaPlayer.setVolume(0.15);
+        sellingMediaPlayer.play();
+    }
+
+    public static void playHealing() {
+        Media healingSound = new Media(SoundEffects.class.getResource("/Assets/sfx/healing.wav").toExternalForm());
+        MediaPlayer healingMediaPlayer = new MediaPlayer(healingSound);
+        healingMediaPlayer.setVolume(0.10);
+        healingMediaPlayer.play();
     }
 }

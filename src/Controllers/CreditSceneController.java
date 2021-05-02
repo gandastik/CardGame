@@ -12,17 +12,10 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreditSceneController  implements Initializable{
+public class CreditSceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    private SoundEffects sfx;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.sfx = new SoundEffects();
-    }
 
     public void onBack(ActionEvent e) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/OpenScene.fxml"));
@@ -32,6 +25,6 @@ public class CreditSceneController  implements Initializable{
         stage.setScene(scene);
         stage.show();
 
-        this.sfx.playMenuClick();
+        SoundEffects.playMenuClick();
     }
 }

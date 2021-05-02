@@ -28,9 +28,6 @@ public class ConfirmWinningController{
     private Player playerOne, playerTwo;
     private int totalDmgTaken;
 
-    private SoundEffects sfx;
-
-
     public void receiveData(Player winner, Player one, Player two, int totalDmgTaken, Stage oldStage){
         this.playerWinner = winner;
         this.playerOne = one;
@@ -64,8 +61,7 @@ public class ConfirmWinningController{
         BattlePhaseController.numberOfTurn+=1;
 
         //Play menuClick sfx
-        this.sfx = new SoundEffects();
-        this.sfx.playMenuClick();
+        SoundEffects.playMenuClick();
 
         //Switch to BuyingPhaseScene
 //        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

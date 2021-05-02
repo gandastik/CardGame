@@ -15,18 +15,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class OpenSceneController implements Initializable {
+public class OpenSceneController {
     @FXML
     private AnchorPane scenePane;
     private Scene scene;
     private Stage stage;
     private Parent root;
-    private SoundEffects sfx;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.sfx = new SoundEffects();
-    }
 
     public void onPlay(ActionEvent e) throws Exception{
         //Switch to Startscene
@@ -36,8 +31,6 @@ public class OpenSceneController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        //Player menuclick sfx
-        this.sfx.playMenuClick();
     }
 
     public void onCredit(ActionEvent e) throws Exception{
@@ -49,7 +42,7 @@ public class OpenSceneController implements Initializable {
         stage.show();
 
         //Player menuclick sfx
-        this.sfx.playMenuClick();
+        SoundEffects.playMenuClick();
     }
 
     public void onQuit(ActionEvent e) throws Exception{
