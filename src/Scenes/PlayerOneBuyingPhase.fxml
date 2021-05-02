@@ -9,17 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlayerOneBuyingPhaseController">
    <children>
-      <Button layoutX="1153.0" layoutY="45.0" mnemonicParsing="false" onAction="#onNext" text="next">
-      <Label layoutX="402.0" layoutY="25.0" text="BUYING PHASE 1">
-         <font>
-            <Font name="Tw Cen MT Condensed Extra Bold" size="72.0" />
-         </font>
-      </Label>
+      <Button layoutX="1144.0" layoutY="46.0" mnemonicParsing="false" onAction="#onNext" prefHeight="55.0" prefWidth="70.0" text="Next">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
          </font>
@@ -385,7 +379,7 @@
             </VBox>
          </children>
       </HBox>
-      <Label fx:id="playerMoney" layoutX="70.0" layoutY="85.0" text="Money : ">
+      <Label fx:id="playerMoney" layoutX="70.0" layoutY="85.0" text="Money : " textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
          </font>
@@ -395,14 +389,19 @@
             <Font name="Tw Cen MT Condensed" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="playerName" layoutX="67.0" layoutY="29.0" text="Player Name : ">
+      <Label fx:id="playerName" layoutX="67.0" layoutY="29.0" text="Player Name : " textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="playerHp" layoutX="69.0" layoutY="58.0" text="HP :">
+      <Label fx:id="playerHp" layoutX="69.0" layoutY="58.0" text="HP :" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerName1" alignment="CENTER" layoutX="460.0" layoutY="40.0" prefHeight="68.0" prefWidth="356.0" text="BUYING PHASE" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="55.0" />
          </font>
       </Label>
    </children>
