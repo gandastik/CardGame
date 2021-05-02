@@ -97,7 +97,7 @@ public class PlayerOneBuyingPhaseController implements Initializable {
     public void initPlayerMoney(){
         int money = this.playerOne.getMoney();
         this.playerMoney.setText("Money : " + money);
-        this.playerName.setText("Player name : " + this.playerOne.getName());
+        this.playerName.setText("Name : " + this.playerOne.getName());
         this.playerHp.setText("HP : " + this.playerOne.getHp());
     }
     public void initBuyingLabelsCost() {

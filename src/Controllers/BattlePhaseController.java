@@ -208,8 +208,8 @@ public class BattlePhaseController implements Initializable {
         this.initCardsOnArena();
 
         //Display the name on the screen
-        this.playerOneName.setText("Player: " + playerOne.getName());
-        this.playerTwoName.setText("Player: " + playerTwo.getName());
+        this.playerOneName.setText(playerOne.getName());
+        this.playerTwoName.setText(playerTwo.getName());
 
         //render
         this.renderPlayerHp();
