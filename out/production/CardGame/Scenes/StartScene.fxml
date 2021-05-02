@@ -12,11 +12,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StartSceneController">
    <children>
-<<<<<<< HEAD
       <Label layoutX="82.0" layoutY="251.0" prefHeight="88.0" prefWidth="284.0" text="PLAYER ONE" textAlignment="RIGHT" textFill="WHITE">
-=======
-      <Label layoutX="184.0" layoutY="250.0" stylesheets="@../Styles/StartSceneBackground.css" text="PLAYER ONE">
->>>>>>> 2197961ebe0bd84d74fe24af2fc638c1af18eb68
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="60.0" />
          </font>
@@ -49,11 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-<<<<<<< HEAD
       <Label layoutX="928.0" layoutY="251.0" prefHeight="88.0" prefWidth="290.0" text="PLAYER TWO" textFill="WHITE">
-=======
-      <Label layoutX="895.0" layoutY="250.0" stylesheets="@../Styles/StartSceneBackground.css" text="PLAYER TWO">
->>>>>>> 2197961ebe0bd84d74fe24af2fc638c1af18eb68
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="60.0" />
          </font>
