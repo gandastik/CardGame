@@ -25,7 +25,7 @@
       </Label>
    </children>
    <stylesheets>
-      <URL value="@../Styles/WinningScene.css" />
+      <URL value="@../Styles/ConfirmWinningScene.css" />
       <URL value="@../Styles/Style.css" />
    </stylesheets>
 </AnchorPane>

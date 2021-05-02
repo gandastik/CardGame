@@ -247,11 +247,25 @@ public class BattlePhaseController implements Initializable {
 
         if(this.checkIfFinish()){
             //show winner scene (Player two) + back to menu button
-            if(this.playerOne.getHp() <= 0 || this.playerTwo.getHp() <= 0){
+            if(this.playerOne.getHp() <= 0){
                 //Display winning scene and show the player name who won!
                 SoundEffects.stopBgMusic();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/OpenScene.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/WinningScene.fxml"));
                 root = loader.load();
+                WinningSceneController controller = loader.getController();
+                controller.receiveData(playerTwo);
+                stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+            else if(this.playerTwo.getHp() <= 0 ){
+                //Display winning scene and show the player name who won!
+                SoundEffects.stopBgMusic();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../Scenes/WinningScene.fxml"));
+                root = loader.load();
+                WinningSceneController controller = loader.getController();
+                controller.receiveData(playerOne);
                 stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);

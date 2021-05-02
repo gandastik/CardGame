@@ -7,6 +7,7 @@ public class SoundEffects {
 
     //Background Music
     public static MediaPlayer bgMediaPlayer;
+    public static MediaPlayer winningMediaPlayer;
 
     public static void playBackgroundMusic() {
         Media bgMedia = new Media(SoundEffects.class.getResource("../Assets/sfx/bgmusic.mp3").toExternalForm());
@@ -52,5 +53,17 @@ public class SoundEffects {
         MediaPlayer healingMediaPlayer = new MediaPlayer(healingSound);
         healingMediaPlayer.setVolume(0.10);
         healingMediaPlayer.play();
+    }
+
+    public static void playWinning(){
+        Media winningSound = new Media(SoundEffects.class.getResource("/Assets/sfx/win.mp3").toExternalForm());
+        winningMediaPlayer = new MediaPlayer(winningSound);
+        winningMediaPlayer.setVolume(0.25);
+        winningMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        winningMediaPlayer.play();
+    }
+
+    public static void stopWinning() {
+        winningMediaPlayer.stop();
     }
 }

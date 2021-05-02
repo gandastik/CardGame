@@ -20,7 +20,7 @@ public class Player {
     }
     public Player(String name){
         this.name = name;
-        this.hp = 1;
+        this.hp = 20;
         this.money = 15;
         this.hands = new ArrayList<Card>();
         this.selectedCard = new ArrayList<Card>();

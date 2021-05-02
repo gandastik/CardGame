@@ -31,6 +31,7 @@ public class OpenSceneController {
         stage.setScene(scene);
         stage.show();
 
+        SoundEffects.playMenuClick();
     }
 
     public void onCredit(ActionEvent e) throws Exception{
@@ -46,6 +47,8 @@ public class OpenSceneController {
     }
 
     public void onQuit(ActionEvent e) throws Exception{
+        SoundEffects.playMenuClick();
+
         stage = (Stage) scenePane.getScene().getWindow();
         System.out.println("You have quit the program!");
         stage.close();
